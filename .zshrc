@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(ubuntu git gpg-agent asdf rust bun python pip)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,14 +102,18 @@ source $ZSH/oh-my-zsh.sh
 
 # ===  Android configs === #
 
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export PATH="$PATH:$JAVA_HOME/bin"
+export PATH="/opt/android-studio/bin:$PATH"
+
+export JAVA_HOME=/opt/android-studio/jbr
+export PATH="$JAVA_HOME/bin:$PATH"
 
 export ANDROID_HOME=/usr/local/lib/Android
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
-export PATH="$PATH:$ANDROID_HOME/tools/bin"
-export PATH="$PATH:$ANDROID_HOME/platform-tools/bin"
+export PATH="$ANDROID_HOME/tools:$PATH"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+export PATH="$ANDROID_HOME/tools/bin:$PATH"
+export PATH="$ANDROID_HOME/platform-tools/bin:$PATH"
+
+export NDK_HOME="$ANDROID_HOME/ndk/27.0.11718014"
 
 export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
 # === /Android configs === #
@@ -122,3 +126,11 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 # ==== /asdf configs ==== #
+
+# pnpm
+export PNPM_HOME="/home/victor/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
