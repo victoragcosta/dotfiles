@@ -100,6 +100,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# ==== Neovim ==== #
+export PATH="/opt/nvim-linux64/bin:$PATH"
+export PROMPT_COMMAND='echo -e -n "\x1b[\x35 q"'
+# ==== /Neovim ==== #
+
 # ===  Android configs === #
 
 export PATH="/opt/android-studio/bin:$PATH"
