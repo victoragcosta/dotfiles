@@ -69,6 +69,9 @@ remap('n', 'x', '"_x')
 remap('v', 'x', '"_x')
 -- Format pasted line
 remap('n', 'p', 'p==')
+-- Map fj to <Esc>
+remap('i', 'fj', '<Esc>')
+remap('v', 'fj', '<Esc>')
 
 -- Page movement up/down
 remap('n', '<C-k>', '<S-Up>zz')
@@ -129,6 +132,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath) -- Ends here, this should be left alone.
+-- Add <Esc> as an option to close the lazy plugins window
+require('lazy.view.config').keys.close = '<Esc>'
 --0=========================================================================0
 -- █▀█ █░░ █░█ █▀▀ █ █▄░█ █▀   █▀ ▀█▀ ▄▀█ █▀█ ▀█▀   █░█ █▀▀ █▀█ █▀▀
 -- █▀▀ █▄▄ █▄█ █▄█ █ █░▀█ ▄█   ▄█ ░█░ █▀█ █▀▄ ░█░   █▀█ ██▄ █▀▄ ██▄
@@ -172,7 +177,7 @@ require("lazy").setup({
     --0=============================================================================================0
     {
       'nvim-telescope/telescope.nvim',
-      tag = '0.1.5',
+      tag = '0.1.6',
       dependencies = { 'nvim-lua/plenary.nvim' },
       config = function()
         -- remaps
@@ -181,6 +186,7 @@ require("lazy").setup({
         remap('n', '<leader>fg', builtin.live_grep)
         remap('n', '<leader>fb', builtin.buffers)
         remap('n', '<leader>fh', builtin.help_tags)
+        remap('n', '<leader>fc', builtin.treesitter)
         -- telescope's setup
         require('telescope').setup {
           defaults = {
@@ -195,6 +201,12 @@ require("lazy").setup({
                 preview_cutoff = 120,
               }
             },
+            mappings = {
+              i = {
+                ["<C-j>"] = "move_selection_next",
+                ["<C-k>"] = "move_selection_previous"
+              }
+            }
           },
         }
       end
@@ -205,13 +217,25 @@ require("lazy").setup({
     --0=============================================================================================0
     {
       'stevearc/oil.nvim',
+      dependencies = { "nvim-tree/nvim-web-devicons" },
       config = function()
         -- remaps
-        remap('n', '<leader>o', ':Oil<CR>')
+        remap('n', '<leader>oo', ':Oil<CR>')
+        remap('n', '<leader>of', ':Oil --float<CR>')
         require('oil').setup({
+          columns = { "icon" },
           default_file_explorer = true,
           keymaps = {
-            ['<C-s>'] = ':w<CR>',
+            -- Remove splits and add Ctrl + S for saving
+            ["<C-s>"] = ":w<CR>",
+            ["<C-h>"] = false,
+            -- Adjust close to be my custom <Esc>
+            ["<leader>fj"] = "actions.close",
+            -- Adjust commands that change cwd
+            ["<leader>cd"] = "actions.cd",
+            ["<leader>tcd"] = "actions.tcd",
+            ["`"] = false,
+            ["~"] = false,
           },
           view_options = { show_hidden = true },
         })
