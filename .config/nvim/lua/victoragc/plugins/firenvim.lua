@@ -1,4 +1,5 @@
-return {
+---@type (string | LazyPluginSpec)[]
+local plugins = {
 	{
 		'glacambre/firenvim',
 
@@ -10,3 +11,4 @@ return {
 		end,
 	},
 }
+return plugins

@@ -1,4 +1,5 @@
-return {
+---@type (string | LazyPluginSpec)[]
+local plugins = {
 	{ -- LSP Configuration & Plugins
 		'neovim/nvim-lspconfig',
 		dependencies = {
@@ -446,3 +447,4 @@ return {
 		end,
 	},
 }
+return plugins

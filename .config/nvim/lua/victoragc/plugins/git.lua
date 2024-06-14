@@ -1,4 +1,5 @@
-return {
+---@type ( string | LazyPluginSpec )[]
+local plugins = {
 	-- Adds git related signs to the gutter, as well as utilities for managing changes
 	-- See `:help gitsigns` to understand what the configuration keys do
 	{
@@ -63,4 +64,40 @@ return {
 			end,
 		},
 	},
+	{
+		'kdheepak/lazygit.nvim',
+		event = 'VimEnter',
+		cmd = {
+			'LazyGit',
+			'LazyGitConfig',
+			'LazyGitCurrentFile',
+			'LazyGitFilter',
+			'LazyGitFilterCurrentFile',
+		},
+		-- optional for floating window border decoration
+		dependencies = {
+			'nvim-telescope/telescope.nvim',
+			'nvim-lua/plenary.nvim',
+		},
+		-- setting the keybinding for LazyGit with 'keys' is recommended in
+		-- order to load the plugin when the command is run for the first time
+		keys = {
+			{ '<leader>lg', '<cmd>LazyGit<cr>', desc = 'Open [L]azy[G]it' },
+		},
+		config = function()
+			require('telescope').load_extension 'lazygit'
+
+			vim.keymap.set('n', '<leader>sG', require('telescope').extensions.lazygit.lazygit, { desc = '[S]earch [G]it repositories' })
+
+			vim.api.nvim_create_autocmd('BufEnter', {
+				desc = 'Add the repository of a buffer to the git telescope search',
+				group = vim.api.nvim_create_augroup('victoragc-autoadd-repo-telescope', { clear = true }),
+				callback = function()
+					require('lazygit.utils').project_root_dir()
+				end,
+			})
+		end,
+	},
 }
+
+return plugins

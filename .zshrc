@@ -100,13 +100,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Add brew to path
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # ==== Neovim ==== #
 export PATH="/opt/nvim-linux64/bin:$PATH"
 export PROMPT_COMMAND='echo -e -n "\x1b[\x35 q"'
 # ==== /Neovim ==== #
 
 # ===  Android configs === #
-
 export PATH="/opt/android-studio/bin:$PATH"
 
 export JAVA_HOME=/opt/android-studio/jbr
@@ -123,6 +125,14 @@ export NDK_HOME="$ANDROID_HOME/ndk/27.0.11718014"
 export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
 # === /Android configs === #
 
+# pnpm
+export PNPM_HOME="/home/victor/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 # ====  asdf configs ==== #
 . $HOME/.asdf/asdf.sh
 
@@ -132,10 +142,3 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit && compinit
 # ==== /asdf configs ==== #
 
-# pnpm
-export PNPM_HOME="/home/victor/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

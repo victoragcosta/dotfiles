@@ -3,7 +3,7 @@
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights' })
+vim.keymap.set('n', '<leader>fj', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -34,6 +34,7 @@ vim.keymap.set({ 'n', 't' }, '<S-Tab>', '<Cmd>bprevious<CR>', { desc = 'Go to pr
 -- Use <leader>b to create new buffers easily and <leader>bd to close buffers
 vim.keymap.set({ 'n', 't' }, '<leader>dn', '<Cmd>enew<CR>', { desc = '[D]ocument buffer [n]ew' })
 vim.keymap.set({ 'n', 't' }, '<leader>dc', '<Cmd>bd<CR>', { desc = '[D]ocument buffer [c]lose' })
+vim.keymap.set({ 'n', 't' }, '<leader>d!c', '<Cmd>bd!<CR>', { desc = '[D]ocument [!]force buffer [c]lose' })
 
 --  Use <leader>+<hjkl> to switch between windows
 --  See `:help wincmd` for a list of all window commands
