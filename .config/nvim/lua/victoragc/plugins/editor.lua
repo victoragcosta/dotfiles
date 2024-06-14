@@ -43,36 +43,7 @@ local plugins = {
 		},
 		keys = function()
 			local hop = require 'hop'
-			local directions = require('hop.hint').HintDirection
 			return {
-				{
-					'f',
-					function()
-						hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true }
-					end,
-					desc = 'Hop forwards to specific character on a line',
-				},
-				{
-					'F',
-					function()
-						hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true }
-					end,
-					desc = 'Hop backwards to specific character on a line',
-				},
-				{
-					't',
-					function()
-						hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 }
-					end,
-					desc = 'Hop forwards before an specific character on a line',
-				},
-				{
-					'T',
-					function()
-						hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 }
-					end,
-					desc = 'Hop backwards after an specific character on a line',
-				},
 				{
 					'<leader>H',
 					function()
