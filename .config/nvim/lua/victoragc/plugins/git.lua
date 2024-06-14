@@ -88,14 +88,6 @@ local plugins = {
 			require('telescope').load_extension 'lazygit'
 
 			vim.keymap.set('n', '<leader>sG', require('telescope').extensions.lazygit.lazygit, { desc = '[S]earch [G]it repositories' })
-
-			vim.api.nvim_create_autocmd('BufEnter', {
-				desc = 'Add the repository of a buffer to the git telescope search',
-				group = vim.api.nvim_create_augroup('victoragc-autoadd-repo-telescope', { clear = true }),
-				callback = function()
-					require('lazygit.utils').project_root_dir()
-				end,
-			})
 		end,
 	},
 }
