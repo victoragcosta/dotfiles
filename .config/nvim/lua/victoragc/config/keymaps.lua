@@ -28,24 +28,24 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- Keybinds to make buffer and split navigation and creation easier.
 
 -- Use <Tab> and <Shift>+<Tab> to change buffers quickly
-vim.keymap.set({ 'n', 't' }, '<Tab>', '<Cmd>bnext<CR>', { desc = 'Go to next buffer' })
-vim.keymap.set({ 'n', 't' }, '<S-Tab>', '<Cmd>bprevious<CR>', { desc = 'Go to previous buffer' })
+vim.keymap.set('n', '<Tab>', '<Cmd>bnext<CR>', { desc = 'Go to next buffer' })
+vim.keymap.set('n', '<S-Tab>', '<Cmd>bprevious<CR>', { desc = 'Go to previous buffer' })
 
 -- Use <leader>b to create new buffers easily and <leader>bd to close buffers
-vim.keymap.set({ 'n', 't' }, '<leader>dn', '<Cmd>enew<CR>', { desc = '[D]ocument buffer [n]ew' })
-vim.keymap.set({ 'n', 't' }, '<leader>dc', '<Cmd>bd<CR>', { desc = '[D]ocument buffer [c]lose' })
-vim.keymap.set({ 'n', 't' }, '<leader>d!c', '<Cmd>bd!<CR>', { desc = '[D]ocument [!]force buffer [c]lose' })
+vim.keymap.set('n', '<leader>dn', '<Cmd>enew<CR>', { desc = '[D]ocument buffer [n]ew' })
+vim.keymap.set('n', '<leader>dc', '<Cmd>bd<CR>', { desc = '[D]ocument buffer [c]lose' })
+vim.keymap.set('n', '<leader>d!c', '<Cmd>bd!<CR>', { desc = '[D]ocument [!]force buffer [c]lose' })
 
 --  Use <leader>+<hjkl> to switch between windows
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set({ 'n', 't' }, '<leader>h', '<Cmd>wincmd h<CR>', { desc = 'Move focus to the left window' })
-vim.keymap.set({ 'n', 't' }, '<leader>l', '<Cmd>wincmd l<CR>', { desc = 'Move focus to the right window' })
-vim.keymap.set({ 'n', 't' }, '<leader>j', '<Cmd>wincmd j<CR>', { desc = 'Move focus to the lower window' })
-vim.keymap.set({ 'n', 't' }, '<leader>k', '<Cmd>wincmd k<CR>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<leader>h', '<Cmd>wincmd h<CR>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<leader>l', '<Cmd>wincmd l<CR>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<leader>j', '<Cmd>wincmd j<CR>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<leader>k', '<Cmd>wincmd k<CR>', { desc = 'Move focus to the upper window' })
 
 -- Use <leader>+<+-> to split vertically or horizontally
-vim.keymap.set({ 'n', 't' }, '<leader>+', '<Cmd>vsplit<CR>', { desc = 'Split the tab vertically' })
-vim.keymap.set({ 'n', 't' }, '<leader>-', '<Cmd>split<CR>', { desc = 'Split the tab horizontally' })
+vim.keymap.set('n', '<leader>+', '<Cmd>vsplit<CR>', { desc = 'Split the tab vertically' })
+vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = 'Split the tab horizontally' })
 
 -- Set easier to press chord to exit modes
 vim.keymap.set({ 'i', 'v' }, 'fj', '<Esc>', { desc = 'Exit mode' })

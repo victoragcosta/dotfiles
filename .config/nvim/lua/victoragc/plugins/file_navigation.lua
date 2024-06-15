@@ -99,14 +99,6 @@ local plugins = {
 							['<leader>h'] = function() end,
 							['<leader>l'] = function() end,
 						},
-						-- t = {
-						-- 	['<leader><leader>'] = function() end,
-						-- 	-- Disable <leader>+<hjkl> for window navigation
-						-- 	['<leader>j'] = function() end,
-						-- 	['<leader>k'] = function() end,
-						-- 	['<leader>h'] = function() end,
-						-- 	['<leader>l'] = function() end,
-						-- },
 						i = { ['<leader><leader>'] = 'close' },
 					},
 				},
@@ -157,17 +149,6 @@ local plugins = {
 			vim.keymap.set('n', '<leader>sn', function()
 				builtin.find_files { cwd = vim.fn.stdpath 'config' }
 			end, { desc = '[S]earch [N]eovim files' })
-
-			-- vim.api.nvim_create_autocmd('User', {
-			-- 	pattern = 'TelescopeResumePost',
-			-- 	desc = 'Teste',
-			-- 	callback = function()
-			-- 		local id = MiniNotify.add 'Hello'
-			-- 		vim.defer_fn(function()
-			-- 			MiniNotify.remove(id)
-			-- 		end, 1000)
-			-- 	end,
-			-- })
 		end,
 	},
 }
