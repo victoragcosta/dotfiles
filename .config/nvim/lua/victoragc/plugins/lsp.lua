@@ -134,7 +134,13 @@ local plugins = {
 					-- This may be unwanted, since they displace some of your code
 					if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
 						map('<leader>th', function()
-							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled {})
+							-- notify the user the state of inlay hints
+							local enabled = 'off'
+							if vim.lsp.inlay_hint.is_enabled {} then
+								enabled = 'on'
+							end
+							vim.notify(string.format('Inlay hint toggled %s', enabled))
 						end, '[T]oggle Inlay [H]ints')
 					end
 				end,
