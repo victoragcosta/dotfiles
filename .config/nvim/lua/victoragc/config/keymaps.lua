@@ -50,6 +50,9 @@ vim.keymap.set('n', '<leader>-', '<Cmd>split<CR>', { desc = 'Split the tab horiz
 -- Set easier to press chord to exit modes
 vim.keymap.set({ 'i', 'v' }, 'fj', '<Esc>', { desc = 'Exit mode' })
 
+-- Set visual block mode as a possible keychord due to widows terminal restrictions
+vim.keymap.set('n', '<M-v>', '<C-v>', { desc = '[V]isual block mode' })
+
 -- Move selected lines with alt arrows like in subl
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up through lines' })
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down through lines' })
