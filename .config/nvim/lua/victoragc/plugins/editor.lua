@@ -66,7 +66,7 @@ local plugins = {
 	{
 		'mbbill/undotree',
 		keys = {
-			{ '<leader>u', vim.cmd.UndotreeToggle },
+			{ '<leader>u', vim.cmd.UndotreeToggle, desc = 'Toggle [U]ndotree' },
 		},
 	},
 }
