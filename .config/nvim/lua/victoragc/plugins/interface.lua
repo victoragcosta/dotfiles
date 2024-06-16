@@ -18,7 +18,10 @@ local plugins = {
 				['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
 				['<leader>o'] = { name = '[O]il file manager', _ = 'which_key_ignore' },
 				['<leader>x'] = { name = '[E]xecute', _ = 'which_key_ignore' },
-				['<leader>d!'] = { name = '[D]ocument [!]force', _ = 'which_key_ignore' },
+				['<leader>d!'] = {
+					name = '[D]ocument [!]force',
+					_ = 'which_key_ignore',
+				},
 			}
 			-- visual mode
 			require('which-key').register({

@@ -10,7 +10,10 @@ end
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
 	desc = 'Highlight when yanking (copying) text',
-	group = vim.api.nvim_create_augroup('victoragc-highlight-yank', { clear = true }),
+	group = vim.api.nvim_create_augroup(
+		'victoragc-highlight-yank',
+		{ clear = true }
+	),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -28,7 +31,11 @@ if vim.g.victoragc.notify_cwd_change then
 		group = cwd_group,
 		callback = function()
 			local function format_cwd()
-				return string.format('Changed CWD to %s in %s', vim.v.event.cwd, vim.v.event.scope)
+				return string.format(
+					'Changed CWD to %s in %s',
+					vim.v.event.cwd,
+					vim.v.event.scope
+				)
 			end
 			local notification_id = MiniNotify.add(format_cwd())
 			vim.defer_fn(function()
