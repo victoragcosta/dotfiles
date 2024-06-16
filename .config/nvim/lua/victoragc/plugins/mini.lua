@@ -10,7 +10,11 @@ local plugins = {
 			require('mini.surround').setup()
 
 			-- Animate some stuff
-			require('mini.animate').setup()
+			require('mini.animate').setup {
+				cursor = {
+					enable = false,
+				},
+			}
 
 			-- Scope indentation visualizer
 			require('mini.indentscope').setup()
@@ -56,7 +60,12 @@ local plugins = {
 
 				local indent_size = vim.bo.tabstop
 
-				return string.format('%s %s %d', old_section_fileinfo(args), tab, indent_size)
+				return string.format(
+					'%s %s %d',
+					old_section_fileinfo(args),
+					tab,
+					indent_size
+				)
 			end
 			-- ... and there is more!
 			--  check out: https://github.com/echasnovski/mini.nvim
