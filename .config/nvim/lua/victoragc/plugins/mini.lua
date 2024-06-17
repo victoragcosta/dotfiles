@@ -35,9 +35,6 @@ local plugins = {
 			notify.setup()
 			vim.notify = notify.make_notify()
 
-			-- Session manager
-			require('mini.sessions').setup()
-
 			-- Bottom statusline
 			local statusline = require 'mini.statusline'
 			-- set use_icons to true if you have a Nerd Font
