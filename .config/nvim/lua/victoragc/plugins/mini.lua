@@ -2,6 +2,7 @@
 local plugins = {
 	{ -- Collection of various small independent plugins/modules
 		'echasnovski/mini.nvim',
+		event = 'VimEnter',
 		config = function()
 			-- Better Around/Inside textobjects
 			require('mini.ai').setup { n_lines = 500 }
@@ -37,6 +38,7 @@ local plugins = {
 			-- Session manager
 			require('mini.sessions').setup()
 
+			-- Bottom statusline
 			local statusline = require 'mini.statusline'
 			-- set use_icons to true if you have a Nerd Font
 			statusline.setup { use_icons = vim.g.have_nerd_font }
