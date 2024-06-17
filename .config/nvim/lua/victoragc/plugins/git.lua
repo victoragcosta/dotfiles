@@ -4,6 +4,7 @@ local plugins = {
 	-- See `:help gitsigns` to understand what the configuration keys do
 	{
 		'lewis6991/gitsigns.nvim',
+		enabled = not vim.g.started_by_firenvim,
 		opts = {
 			signs = {
 				add = { text = '+' },
@@ -116,6 +117,7 @@ local plugins = {
 	},
 	{
 		'kdheepak/lazygit.nvim',
+		enabled = not vim.g.started_by_firenvim,
 		event = 'VimEnter',
 		cmd = {
 			'LazyGit',

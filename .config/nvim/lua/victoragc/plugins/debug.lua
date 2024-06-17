@@ -2,12 +2,14 @@
 local plugins = {
 	{
 		'microsoft/vscode-js-debug',
+		-- NOTE: Disable debuggers for textarea editors in the browser (it makes no sense using them)
+		enabled = not vim.g.started_by_firenvim,
 		build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
 	},
 	{
-		-- NOTE: Yes, you can install new plugins here!
 		'mfussenegger/nvim-dap',
-		-- NOTE: And you can specify dependencies as well
+		-- NOTE: Disable debuggers for textarea editors in the browser (it makes no sense using them)
+		enabled = not vim.g.started_by_firenvim,
 		dependencies = {
 			-- Creates a beautiful debugger UI
 			'rcarriga/nvim-dap-ui',
@@ -103,6 +105,7 @@ local plugins = {
 			dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
 			-- Install specific config
+			---@diagnostic disable-next-line: missing-fields
 			require('dap-vscode-js').setup {
 				-- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
 				-- debugger_path = "(runtimedir)/site/pack/packer/opt/vscode-js-debug", -- Path to vscode-js-debug installation.

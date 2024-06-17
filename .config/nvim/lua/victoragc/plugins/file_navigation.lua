@@ -42,6 +42,7 @@ local plugins = {
 	{
 		'refractalize/oil-git-status.nvim',
 
+		enabled = not vim.g.started_by_firenvim,
 		dependencies = {
 			'stevearc/oil.nvim',
 		},

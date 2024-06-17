@@ -53,6 +53,7 @@ local plugins = {
 	},
 	{
 		'akinsho/bufferline.nvim',
+		enabled = not vim.g.started_by_firenvim,
 		version = '*',
 		config = function()
 			require('bufferline').setup()
