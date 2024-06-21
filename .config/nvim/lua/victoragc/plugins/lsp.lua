@@ -230,8 +230,17 @@ local plugins = {
 				tailwindcss = {},
 				-- TS, JS and related
 				tsserver = {},
-				svelte = {},
-				eslint = {},
+				svelte = {
+					['enable-ts-plugin'] = true,
+					plugin = {
+						svelte = {
+							defaultScriptLanguage = 'ts',
+						},
+					},
+				},
+				eslint = {
+					useFlatConfig = true,
+				},
 				graphql = {},
 				rust_analyzer = {},
 				lua_ls = {
@@ -347,11 +356,11 @@ local plugins = {
 			-- Configure linter by language
 			lint.linters_by_ft = {
 				markdown = { 'markdownlint', 'cspell' },
-				javascript = { 'eslint_d', 'cspell' },
-				typescript = { 'eslint_d', 'cspell' },
-				javascriptreact = { 'eslint_d', 'cspell' },
-				typescriptreact = { 'eslint_d', 'cspell' },
-				svelte = { 'eslint_d', 'cspell' },
+				javascript = { 'eslint', 'cspell' },
+				typescript = { 'eslint', 'cspell' },
+				javascriptreact = { 'eslint', 'cspell' },
+				typescriptreact = { 'eslint', 'cspell' },
+				svelte = { 'eslint', 'cspell' },
 				rust = { 'cspell' },
 			}
 
