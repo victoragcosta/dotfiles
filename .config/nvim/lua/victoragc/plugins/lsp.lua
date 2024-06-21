@@ -336,6 +336,15 @@ local plugins = {
 		event = { 'BufReadPre', 'BufNewFile' },
 		config = function()
 			local lint = require 'lint'
+
+			-- Make cspell use a global config
+			table.insert(lint.linters.cspell.args, 2, '--config')
+			table.insert(
+				lint.linters.cspell.args,
+				3,
+				string.format('%s/.config/cspell/cspell.config.js', os.getenv 'HOME')
+			)
+			-- Configure linter by language
 			lint.linters_by_ft = {
 				markdown = { 'markdownlint', 'cspell' },
 				javascript = { 'eslint_d', 'cspell' },
