@@ -45,11 +45,11 @@ local plugins = {
 			local hop = require 'hop'
 			return {
 				{
-					'<leader>H',
+					'S',
 					function()
-						hop.hint_words {}
+						hop.hint_anywhere {}
 					end,
-					desc = 'Hop to some visible word',
+					desc = 'Hop to some visible [S]pot',
 				},
 			}
 		end,

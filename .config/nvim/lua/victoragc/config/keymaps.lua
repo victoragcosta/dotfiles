@@ -127,6 +127,12 @@ vim.keymap.set(
 	{ desc = 'Split the tab horizontally' }
 )
 
+-- Resize splits
+vim.keymap.set('n', '<S-Left>', '<Cmd>vertical resize -2<CR>')
+vim.keymap.set('n', '<S-Right>', '<Cmd>vertical resize +2<CR>')
+vim.keymap.set('n', '<S-Up>', '<Cmd>resize +2<CR>')
+vim.keymap.set('n', '<S-Down>', '<Cmd>resize -2<CR>')
+
 -- Set easier to press chord to exit modes
 vim.keymap.set({ 'i', 'v' }, 'fj', '<Esc>', { desc = 'Exit mode' })
 
