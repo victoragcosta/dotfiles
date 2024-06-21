@@ -374,6 +374,23 @@ local plugins = {
 				rust = { 'cspell' },
 			}
 
+			-- Disable eslint if running on firenvim
+			if vim.g.started_by_firenvim then
+				for _, language in ipairs {
+					'javascript',
+					'typescript',
+					'javascriptreact',
+					'typescriptreact',
+					'svelte',
+				} do
+					for i, v in ipairs(lint.linters_by_ft[language]) do
+						if v == 'eslint' then
+							table.remove(lint.linters_by_ft[language], i)
+						end
+					end
+				end
+			end
+
 			-- To allow other plugins to add linters to require('lint').linters_by_ft,
 			-- instead set linters_by_ft like this:
 			-- lint.linters_by_ft = lint.linters_by_ft or {}
