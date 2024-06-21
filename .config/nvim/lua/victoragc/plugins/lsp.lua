@@ -320,6 +320,9 @@ local plugins = {
 		opts = {
 			notify_on_error = false,
 			format_on_save = function(bufnr)
+				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+					return
+				end
 				-- Disable "format_on_save lsp_fallback" for languages that don't
 				-- have a well standardized coding style. You can add additional
 				-- languages here or re-enable it for the disabled ones.
@@ -359,6 +362,7 @@ local plugins = {
 				3,
 				string.format('%s/.config/cspell/cspell.config.js', os.getenv 'HOME')
 			)
+
 			-- Configure linter by language
 			lint.linters_by_ft = {
 				markdown = { 'markdownlint', 'cspell' },
