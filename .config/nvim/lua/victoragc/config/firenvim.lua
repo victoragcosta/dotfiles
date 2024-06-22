@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd({ 'UIEnter' }, {
 	callback = function(event)
 		local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
 		if client ~= nil and client.name == 'Firenvim' then
+			-- Configs
 			-- Set minimal width and height
 			if vim.o.lines < 40 then
 				vim.o.lines = 40
@@ -23,6 +24,8 @@ vim.api.nvim_create_autocmd({ 'UIEnter' }, {
 			if vim.o.columns < 80 then
 				vim.o.columns = 80
 			end
+			-- Set font for the GUI
+			vim.o.guifont = 'FiraCode Nerd Font Mono'
 
 			-- Keymaps --
 			vim.keymap.set('n', '<Esc><Esc>', '<Cmd>call firenvim#focus_page()<CR>')
