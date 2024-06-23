@@ -11,11 +11,11 @@ local plugins = {
 			require('mini.surround').setup()
 
 			-- Animate some stuff
-			require('mini.animate').setup {
-				cursor = {
-					enable = false,
-				},
-			}
+			-- require('mini.animate').setup {
+			-- 	cursor = {
+			-- 		enable = false,
+			-- 	},
+			-- }
 
 			-- Scope indentation visualizer
 			require('mini.indentscope').setup()
