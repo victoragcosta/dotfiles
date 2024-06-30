@@ -4,6 +4,7 @@ cp ~/.zshrc ./.zshrc
 cp ~/.vimrc ./.vimrc
 cp ~/.gnupg/gpg.conf ./.gnupg/gpg.conf
 cp ~/.gnupg/gpg-agent.conf ./.gnupg/gpg-agent.conf
+rm ./.config/nvim/* -r # Clean folder to remove old files
 cp ~/.config/nvim/* -r ./.config/nvim/
 cp ~/.config/nvim/.stylua.toml ./.config/nvim/
 cp ~/.config/nvim/.gitignore ./.config/nvim/
