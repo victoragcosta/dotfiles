@@ -77,13 +77,13 @@ vim.keymap.set(
 vim.keymap.set(
 	'n',
 	'<leader>dc',
-	'<Cmd>bd<CR>',
+	'<Cmd>lua MiniBufremove.delete()<CR>',
 	{ desc = '[D]ocument buffer [c]lose' }
 )
 vim.keymap.set(
 	'n',
 	'<leader>d!c',
-	'<Cmd>bd!<CR>',
+	'<Cmd>lua MiniBufremove.delete(nil, true)<CR>',
 	{ desc = '[D]ocument [!]force buffer [c]lose' }
 )
 

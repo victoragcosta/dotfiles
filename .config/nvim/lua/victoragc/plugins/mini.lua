@@ -10,6 +10,8 @@ local plugins = {
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			require('mini.surround').setup()
 
+			-- Remove buffers without affecting the window layout
+			require('mini.bufremove').setup {}
 
 			-- Scope indentation visualizer
 			require('mini.indentscope').setup()
