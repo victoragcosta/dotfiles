@@ -48,6 +48,7 @@ vim.keymap.set(
 	'<C-\\><C-n>',
 	{ desc = 'Exit terminal mode' }
 )
+vim.keymap.set('t', 'fjfj', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
