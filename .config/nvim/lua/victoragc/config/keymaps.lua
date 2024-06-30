@@ -134,7 +134,7 @@ vim.keymap.set('n', '<S-Right>', '<Cmd>vertical resize +2<CR>')
 vim.keymap.set('n', '<S-Up>', '<Cmd>resize +2<CR>')
 vim.keymap.set('n', '<S-Down>', '<Cmd>resize -2<CR>')
 
--- Set easier to press chord to exit modes
+-- Set easier to press melody to exit modes
 vim.keymap.set({ 'i', 'v' }, 'fj', '<Esc>', { desc = 'Exit mode' })
 
 -- Set visual block mode as a possible keychord due to widows terminal restrictions
