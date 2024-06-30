@@ -10,12 +10,6 @@ local plugins = {
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			require('mini.surround').setup()
 
-			-- Animate some stuff
-			-- require('mini.animate').setup {
-			-- 	cursor = {
-			-- 		enable = false,
-			-- 	},
-			-- }
 
 			-- Scope indentation visualizer
 			require('mini.indentscope').setup()
