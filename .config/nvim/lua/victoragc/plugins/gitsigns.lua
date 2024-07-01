@@ -115,38 +115,6 @@ local plugins = {
 			end,
 		},
 	},
-	{
-		'kdheepak/lazygit.nvim',
-		enabled = not vim.g.started_by_firenvim,
-		event = 'VimEnter',
-		cmd = {
-			'LazyGit',
-			'LazyGitConfig',
-			'LazyGitCurrentFile',
-			'LazyGitFilter',
-			'LazyGitFilterCurrentFile',
-		},
-		-- optional for floating window border decoration
-		dependencies = {
-			'nvim-telescope/telescope.nvim',
-			'nvim-lua/plenary.nvim',
-		},
-		-- setting the keybinding for LazyGit with 'keys' is recommended in
-		-- order to load the plugin when the command is run for the first time
-		keys = {
-			{ '<leader>lg', '<cmd>LazyGit<cr>', desc = 'Open [L]azy[G]it' },
-		},
-		config = function()
-			require('telescope').load_extension 'lazygit'
-
-			vim.keymap.set(
-				'n',
-				'<leader>sG',
-				require('telescope').extensions.lazygit.lazygit,
-				{ desc = '[S]earch [G]it repositories' }
-			)
-		end,
-	},
 }
 
 return plugins
