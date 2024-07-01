@@ -3,7 +3,7 @@ local plugins = {
 	{
 		'mfussenegger/nvim-dap',
 		-- NOTE: Disable debuggers for textarea editors in the browser (it makes no sense using them)
-		enabled = not vim.g.started_by_firenvim,
+		cond = not vim.g.started_by_firenvim,
 		dependencies = {
 			-- Creates a beautiful debugger UI
 			'rcarriga/nvim-dap-ui',
