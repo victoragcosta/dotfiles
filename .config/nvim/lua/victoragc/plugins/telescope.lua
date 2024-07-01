@@ -23,6 +23,7 @@ local plugins = {
 
 			-- Useful for getting pretty icons, but requires a Nerd Font.
 			{ 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+			'keyvchan/telescope-find-pickers.nvim',
 		},
 		config = function()
 			local telescope = require 'telescope'
@@ -56,6 +57,7 @@ local plugins = {
 			pcall(telescope.load_extension, 'fzf')
 			pcall(telescope.load_extension, 'ui-select')
 			pcall(telescope.load_extension, 'nerdy')
+			pcall(telescope.load_extension, 'find_pickers')
 
 			-- See `:help telescope.builtin`
 			local builtin = require 'telescope.builtin'
@@ -80,7 +82,7 @@ local plugins = {
 			vim.keymap.set(
 				'n',
 				'<leader>ss',
-				builtin.builtin,
+				telescope.extensions.find_pickers.find_pickers,
 				{ desc = '[S]earch [S]elect Telescope' }
 			)
 			vim.keymap.set(
