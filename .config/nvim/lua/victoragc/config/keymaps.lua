@@ -58,14 +58,11 @@ vim.keymap.set('t', 'fjfj', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Keybinds to make buffer and split navigation and creation easier.
 
--- Use <Tab> and <Shift>+<Tab> to change buffers quickly
-vim.keymap.set('n', '<Tab>', '<Cmd>bnext<CR>', { desc = 'Go to next buffer' })
-vim.keymap.set(
-	'n',
-	'<S-Tab>',
-	'<Cmd>bprevious<CR>',
-	{ desc = 'Go to previous buffer' }
-)
+-- Use <Tab> and <Shift>+<Tab> to change tabs quickly
+vim.keymap.set('n', '<Tab>', '<Cmd>tabn<CR>', { desc = 'Go to next tab' })
+vim.keymap.set('n', '<S-Tab>', '<Cmd>tabp<CR>', { desc = 'Go to previous tab' })
+vim.keymap.set('n', '<C-t>', '<Cmd>tabnew<CR>', { desc = 'Create a new tab' })
+vim.keymap.set('n', '<C-x>', '<Cmd>tabc<CR>', { desc = 'Close current tab' })
 
 -- Use <leader>b to create new buffers easily and <leader>bd to close buffers
 vim.keymap.set(
@@ -85,6 +82,18 @@ vim.keymap.set(
 	'<leader>d!c',
 	'<Cmd>lua MiniBufremove.delete(nil, true)<CR>',
 	{ desc = '[D]ocument [!]force buffer [c]lose' }
+)
+vim.keymap.set(
+	'n',
+	'<leader>dl',
+	'<Cmd>bn<CR>',
+	{ desc = '[D]ocument go to next(l) buffer' }
+)
+vim.keymap.set(
+	'n',
+	'<leader>dh',
+	'<Cmd>bp<CR>',
+	{ desc = '[D]ocument go to previous(h) buffer' }
 )
 
 --  Use <leader>+<hjkl> to switch between windows
