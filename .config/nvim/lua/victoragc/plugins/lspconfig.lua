@@ -60,17 +60,17 @@ local plugins = {
 					-- Fuzzy find all the symbols in your current document.
 					--  Symbols are things like variables, functions, types, etc.
 					map(
-						'<leader>ds',
+						'<leader>sbs',
 						require('telescope.builtin').lsp_document_symbols,
-						'[D]ocument [S]ymbols'
+						'[S]earch [B]uffer [S]ymbols'
 					)
 
 					-- Fuzzy find all the symbols in your current workspace.
 					--  Similar to document symbols, except searches over your entire project.
 					map(
-						'<leader>ws',
+						'<leader>sws',
 						require('telescope.builtin').lsp_dynamic_workspace_symbols,
-						'[W]orkspace [S]ymbols'
+						'[S]earch [W]orkspace [S]ymbols'
 					)
 
 					-- Rename the variable under your cursor.
