@@ -8,7 +8,10 @@ local plugins = {
 				'microsoft/vscode-js-debug',
 				-- NOTE: Disable debuggers for textarea editors in the browser (it makes no sense using them)
 				enabled = not vim.g.started_by_firenvim,
-				build = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+				build = 'npm install --legacy-peer-deps'
+					.. ' && npx gulp vsDebugServerBundle'
+					.. ' && mv dist out '
+					.. ' && git restore package-lock.json',
 			},
 		},
 		config = function()
