@@ -56,6 +56,9 @@ vim.opt.listchars =
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
+-- Let me know when I'm reaching the limit column
+vim.opt_global.colorcolumn = { 80, '+0' }
+
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
