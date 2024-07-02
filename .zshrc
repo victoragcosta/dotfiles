@@ -131,6 +131,15 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+nvim () {
+  pidof socat > /dev/null 2>&1
+  if ! $? -eq 0; then
+    socat UNIX-LISTEN:/tmp/discord-ipc-0,fork \
+      EXEC:"npiperelay.exe //./pipe/discord-ipc-0"&
+  fi
+  command nvim "$@"
+}
 # pnpm end
 
 # ====  asdf configs ==== #
