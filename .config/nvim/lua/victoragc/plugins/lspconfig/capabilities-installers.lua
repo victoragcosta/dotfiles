@@ -39,8 +39,6 @@ end
 capabilities.install_inlay_hint_toggler = function(buf)
 	local map = helpers.create_keymapper(buf)
 
-	vim.lsp.inlay_hint.enable(true)
-
 	local notify_inlay_hint_state = function()
 		local enabled = 'off'
 		if vim.lsp.inlay_hint.is_enabled {} then
