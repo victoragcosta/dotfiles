@@ -59,7 +59,10 @@ local plugins = {
 						},
 					},
 				},
-				graphql = {},
+				-- graphql = {},
+				relay_lsp = {
+					cmd = { 'pnpm', 'exec', 'relay-compiler', 'lsp' },
+				},
 
 				-- Other languages
 				rust_analyzer = {},
@@ -136,23 +139,26 @@ local plugins = {
 				require('cmp_nvim_lsp').default_capabilities()
 			)
 
+			local setup_lsp = function(server_name)
+				local server = lsp_configs[server_name] or {}
+				-- This handles overriding only values explicitly passed
+				-- by the server configuration above. Useful when disabling
+				-- certain features of an LSP (for example, turning off formatting for tsserver)
+				server.capabilities = vim.tbl_deep_extend(
+					'force',
+					{},
+					capabilities,
+					server.capabilities or {}
+				)
+				require('lspconfig')[server_name].setup(server)
+			end
 			require('mason-lspconfig').setup {
 				handlers = {
-					function(server_name)
-						local server = lsp_configs[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for tsserver)
-						server.capabilities = vim.tbl_deep_extend(
-							'force',
-							{},
-							capabilities,
-							server.capabilities or {}
-						)
-						require('lspconfig')[server_name].setup(server)
-					end,
+					setup_lsp,
 				},
 			}
+			-- Manually setup non mason lsps
+			setup_lsp 'relay_lsp'
 
 			require('mason-nvim-dap').setup {
 				automatic_installation = false,
