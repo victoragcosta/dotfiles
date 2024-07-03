@@ -108,12 +108,29 @@ export PATH="/opt/nvim-linux64/bin:$PATH"
 export PROMPT_COMMAND='echo -e -n "\x1b[\x35 q"'
 
 nvim () {
+  # This errors if there's no socat running
   pidof socat > /dev/null 2>&1
-  if ! $? -eq 0; then
+  # If there's not socat running
+  if [[ $? -ne 0 ]]; then
+    # Run socat
     socat UNIX-LISTEN:/tmp/discord-ipc-0,fork \
-      EXEC:"npiperelay.exe //./pipe/discord-ipc-0"&
+      EXEC:"npiperelay.exe //./pipe/discord-ipc-0" & disown
+    echo "Started detached socat"
   fi
   command nvim "$@"
+
+  # Now we'll stop socat if there's no nvim instance and socat is running
+  pidof nvim > /dev/null 2>&1
+  nvim_error=$?
+  pidof socat > /dev/null 2>&1
+  socat_error=$?
+  # If all nvim instances died and socat is running
+  if [[ $nvim_error -ne 0 && $socat_error -eq 0 ]]; then
+    # KILL IT!
+    socat_pid=$(pidof socat)
+    kill $socat_pid
+    echo "Killed socat with PID: $socat_pid"
+  fi
 }
 # ==== /Neovim ==== #
 
