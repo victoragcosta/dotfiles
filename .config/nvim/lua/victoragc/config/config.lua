@@ -19,6 +19,9 @@ vim.opt.mouse = 'a'
 -- Show mode because I like it
 vim.opt.showmode = true
 
+-- Always show tabline because I like it
+vim.o.showtabline = 2
+
 -- Sync clipboard between OS and Neovim.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
@@ -68,5 +71,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 15
 
+-- Better colors for terminal
 vim.opt.termguicolors = true
 
+-- Set what will be saved in sessions
+vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
