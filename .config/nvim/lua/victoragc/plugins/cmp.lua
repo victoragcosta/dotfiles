@@ -35,6 +35,9 @@ local plugins = {
 			--  into multiple repos for maintenance purposes.
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-path',
+			-- Symbols for the completion
+			'onsails/lspkind.nvim',
+			'luckasRanarison/tailwind-tools.nvim',
 		},
 		opts = function()
 			-- See `:help cmp`
@@ -106,6 +109,16 @@ local plugins = {
 					{ name = 'nvim_lsp' },
 					{ name = 'luasnip' },
 					{ name = 'path' },
+				},
+				formatting = {
+					format = require('lspkind').cmp_format {
+						mode = 'symbol',
+						maxwidth = 60,
+						ellipsis_char = '',
+						show_labelDetails = true,
+						preset = 'default',
+						before = require('tailwind-tools.cmp').lspkind_format,
+					},
 				},
 			}
 			return local_opts
