@@ -107,7 +107,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="/opt/nvim-linux64/bin:$PATH"
 export PROMPT_COMMAND='echo -e -n "\x1b[\x35 q"'
 
-nvim () {
+nvim-discord () {
   # This errors if there's no socat running
   pidof socat > /dev/null 2>&1
   # If there's not socat running
