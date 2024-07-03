@@ -19,6 +19,9 @@ vim.opt.mouse = 'a'
 -- Show mode because I like it
 vim.opt.showmode = true
 
+-- Always show tabline because I like it
+vim.o.showtabline = 2
+
 -- Sync clipboard between OS and Neovim.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
