@@ -2,7 +2,7 @@
 local plugins = {
 	{
 		'windwp/nvim-ts-autotag',
-		event = 'VimEnter',
+		event = 'BufReadPre',
 		opts = {
 			opts = {
 				enable_close = true,

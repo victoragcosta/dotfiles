@@ -2,7 +2,6 @@
 local plugins = {
 	{ -- Fuzzy Finder (files, lsp, etc)
 		'nvim-telescope/telescope.nvim',
-		event = 'VimEnter',
 		branch = '0.1.x',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
@@ -60,62 +59,47 @@ local plugins = {
 			pcall(telescope.load_extension, 'find_pickers')
 
 			-- See `:help telescope.builtin`
+		end,
+		keys = function()
+			local keys = {}
+			local map = function(mode, rhs, lhs, opts)
+				table.insert(
+					keys,
+					vim.tbl_extend('force', { rhs, lhs, mode = mode or 'n' }, opts)
+				)
+			end
+			local telescope = require 'telescope'
 			local builtin = require 'telescope.builtin'
-			vim.keymap.set(
-				'n',
-				'<leader>sh',
-				builtin.help_tags,
-				{ desc = '[S]earch [H]elp' }
-			)
-			vim.keymap.set(
-				'n',
-				'<leader>sk',
-				builtin.keymaps,
-				{ desc = '[S]earch [K]eymaps' }
-			)
-			vim.keymap.set(
-				'n',
-				'<leader>sf',
-				builtin.find_files,
-				{ desc = '[S]earch [F]iles' }
-			)
-			vim.keymap.set(
+			map('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+			map('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+			map('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+			map(
 				'n',
 				'<leader>ss',
 				telescope.extensions.find_pickers.find_pickers,
 				{ desc = '[S]earch [S]elect Telescope' }
 			)
-			vim.keymap.set(
+			map(
 				'n',
 				'<leader>sw',
 				builtin.grep_string,
 				{ desc = '[S]earch current [W]ord' }
 			)
-			vim.keymap.set(
-				'n',
-				'<leader>sg',
-				builtin.live_grep,
-				{ desc = '[S]earch by [g]rep' }
-			)
-			vim.keymap.set(
+			map('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [g]rep' })
+			map(
 				'n',
 				'<leader>sd',
 				builtin.diagnostics,
 				{ desc = '[S]earch [D]iagnostics' }
 			)
-			vim.keymap.set(
-				'n',
-				'<leader>sr',
-				builtin.resume,
-				{ desc = '[S]earch [R]esume' }
-			)
-			vim.keymap.set(
+			map('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+			map(
 				'n',
 				'<leader>s.',
 				builtin.oldfiles,
 				{ desc = '[S]earch Recent Files ("." for repeat)' }
 			)
-			vim.keymap.set(
+			map(
 				'n',
 				'<leader><leader>',
 				builtin.buffers,
@@ -123,7 +107,7 @@ local plugins = {
 			)
 
 			-- Slightly advanced example of overriding default behavior and theme
-			vim.keymap.set('n', '<leader>/', function()
+			map('n', '<leader>/', function()
 				-- You can pass additional configuration to Telescope to change the theme, layout, etc.
 				builtin.current_buffer_fuzzy_find(
 					require('telescope.themes').get_dropdown {
@@ -135,7 +119,7 @@ local plugins = {
 
 			-- It's also possible to pass additional configuration options.
 			--  See `:help telescope.builtin.live_grep()` for information about particular keys
-			vim.keymap.set('n', '<leader>s/', function()
+			map('n', '<leader>s/', function()
 				builtin.live_grep {
 					grep_open_files = true,
 					prompt_title = 'Live Grep in Open Files',
@@ -143,9 +127,11 @@ local plugins = {
 			end, { desc = '[S]earch [/] in Open Files' })
 
 			-- Shortcut for searching your Neovim configuration files
-			vim.keymap.set('n', '<leader>sn', function()
+			map('n', '<leader>sn', function()
 				builtin.find_files { cwd = vim.fn.stdpath 'config' }
 			end, { desc = '[S]earch [N]eovim files' })
+
+			return keys
 		end,
 	},
 }

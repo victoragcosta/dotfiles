@@ -70,6 +70,3 @@ vim.opt.scrolloff = 15
 
 vim.opt.termguicolors = true
 
--- Configure lazygit.nvim options
-vim.g.lazygit_floating_window_winblend = 0 -- transparency of floating window
-vim.g.lazygit_floating_window_use_plenary = 1 -- use plenary.nvim to manage floating window if available

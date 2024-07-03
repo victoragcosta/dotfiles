@@ -5,7 +5,6 @@ local plugins = {
 		-- NOTE: Disable debuggers for textarea editors in the browser (it makes no sense using them)
 		cond = not vim.g.started_by_firenvim,
 		dependencies = {
-			'mfussenegger/nvim-dap',
 			{
 				'microsoft/vscode-js-debug',
 				-- NOTE: Disable debuggers for textarea editors in the browser (it makes no sense using them)

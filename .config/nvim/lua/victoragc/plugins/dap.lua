@@ -13,6 +13,9 @@ local plugins = {
 
 			-- Add virtual text
 			'theHamsta/nvim-dap-virtual-text',
+
+			-- Daps
+			'mxsdev/nvim-dap-vscode-js',
 		},
 		config = function()
 			local dap = require 'dap'
