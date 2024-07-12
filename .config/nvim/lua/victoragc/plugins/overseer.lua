@@ -2,6 +2,7 @@
 local plugins = {
 	{
 		'stevearc/overseer.nvim',
+		dependencies = { 'nvim-telescope/telescope.nvim' },
 		opts = {},
 		keys = {
 			{
