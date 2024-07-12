@@ -41,6 +41,9 @@ local plugins = {
 							Terminal:new { cmd = 'lazygit', direction = 'tab', hidden = true }
 					end
 
+					if lazygit_terminal.direction ~= 'tab' then
+						lazygit_terminal:change_direction 'tab'
+					end
 					lazygit_terminal:toggle()
 				end,
 				desc = '[L]azy[g]it',
