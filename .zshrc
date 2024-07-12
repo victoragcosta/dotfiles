@@ -151,14 +151,6 @@ export NDK_HOME="$ANDROID_HOME/ndk/27.0.11718014"
 export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
 # === /Android configs === #
 
-# pnpm
-export PNPM_HOME="/home/victor/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # ====  asdf configs ==== #
 . $HOME/.asdf/asdf.sh
 
