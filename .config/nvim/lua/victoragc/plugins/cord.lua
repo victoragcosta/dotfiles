@@ -2,6 +2,7 @@
 local plugins = {
 	{
 		'vyfor/cord.nvim',
+		enabled = false,
 		build = './build',
 		event = 'VeryLazy',
 		opts = {
