@@ -59,10 +59,10 @@ local plugins = {
 						},
 					},
 				},
-				-- graphql = {},
 				relay_lsp = {
 					cmd = { 'pnpm', 'exec', 'relay-compiler', 'lsp' },
 				},
+				graphql = {},
 
 				-- Other languages
 				rust_analyzer = {},
