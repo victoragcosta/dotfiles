@@ -40,6 +40,8 @@ local plugins = {
 				javascriptreact = { { 'prettierd', 'prettier' } },
 				typescriptreact = { { 'prettierd', 'prettier' } },
 				svelte = { { 'prettierd', 'prettier' } },
+				markdown = { { 'prettierd', 'prettier' } },
+				graphql = { { 'prettierd', 'prettier' } },
 
 				rust = { 'rustfmt' },
 			},
