@@ -25,6 +25,7 @@ local plugins = {
 				['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
 				['<leader>o'] = { name = '[O]il file manager', _ = 'which_key_ignore' },
 				['<leader>x'] = { name = 'E[x]ecute', _ = 'which_key_ignore' },
+				['<leader>xc'] = { name = '[C]olor', _ = 'which_key_ignore' },
 				['<leader>d!'] = {
 					name = '[D]ocument [!]force',
 					_ = 'which_key_ignore',
