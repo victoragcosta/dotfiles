@@ -35,13 +35,13 @@ local plugins = {
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
-				javascript = { { 'prettierd', 'prettier' } },
-				typescript = { { 'prettierd', 'prettier' } },
-				javascriptreact = { { 'prettierd', 'prettier' } },
-				typescriptreact = { { 'prettierd', 'prettier' } },
-				svelte = { { 'prettierd', 'prettier' } },
-				markdown = { { 'prettierd', 'prettier' } },
-				graphql = { { 'prettierd', 'prettier' } },
+				javascript = { 'prettierd' },
+				typescript = { 'prettierd' },
+				javascriptreact = { 'prettierd' },
+				typescriptreact = { 'prettierd' },
+				svelte = { 'prettierd' },
+				markdown = { 'prettierd' },
+				graphql = { 'prettierd' },
 
 				rust = { 'rustfmt' },
 			},
