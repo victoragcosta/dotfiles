@@ -43,6 +43,7 @@ local plugins = {
 				markdown = { 'prettierd' },
 				graphql = { 'prettierd' },
 				html = { 'prettierd' },
+				css = { 'prettierd' },
 
 				rust = { 'rustfmt' },
 			},
