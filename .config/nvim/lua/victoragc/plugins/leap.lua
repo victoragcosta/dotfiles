@@ -4,22 +4,22 @@ local plugins = {
 		'ggandor/leap.nvim',
 		keys = {
 			{
-				'S',
+				's',
 				'<Plug>(leap-forward)',
 				mode = { 'n', 'x', 'o' },
-				desc = '[S]alta pra frente',
+				desc = '[s]alta pra frente',
+			},
+			{
+				'S',
+				'<Plug>(leap-backward)',
+				mode = { 'n', 'x', 'o' },
+				desc = '[S]alta pra trás',
 			},
 			{
 				'gs',
-				'<Plug>(leap-backward)',
-				mode = { 'n', 'x', 'o' },
-				desc = '[s]alta pra trás',
-			},
-			{
-				'gS',
 				'<Plug>(leap-from-window)',
 				mode = { 'n', 'x', 'o' },
-				desc = '[S]alta pela janela',
+				desc = '[s]alta pela janela',
 			},
 		},
 	},
