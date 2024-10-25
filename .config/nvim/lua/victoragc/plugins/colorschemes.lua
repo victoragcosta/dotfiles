@@ -15,10 +15,6 @@ local plugins = {
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi 'Comment gui=none'
-
-			-- Tabline
-			vim.cmd.hi 'TabLineHead guibg=#7aa2f7 guifg=#15161e'
-			vim.cmd.hi 'TabLineIn guibg=#8e9db5 guifg=#15161e'
 		end,
 	},
 }
