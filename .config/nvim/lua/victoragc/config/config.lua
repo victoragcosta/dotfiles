@@ -71,5 +71,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 15
 
+-- Better colors for terminal
 vim.opt.termguicolors = true
 
+-- Set what will be saved in sessions
+vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
