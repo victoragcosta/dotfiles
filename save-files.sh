@@ -11,4 +11,5 @@ cp ~/.config/nvim/.gitignore ./.config/nvim/
 rm ./.config/nvim/lazy-lock.json
 cp ~/.config/rustfmt/rustfmt.toml ./.config/rustfmt/rustfmt.toml
 cp ~/.config/cspell/* ./.config/cspell/
+cp ~/.config/lazygit/* ./.config/lazygit/
 cp ~/.config/Google/AndroidStudio2023.3/studio64.vmoptions ./.config/Google/AndroidStudio2023.3/studio64.vmoptions
