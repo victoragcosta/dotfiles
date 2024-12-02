@@ -7,7 +7,10 @@ local plugins = {
 		dependencies = {
 			'WhoIsSethDaniel/mason-tool-installer.nvim',
 			'williamboman/mason-lspconfig.nvim',
-			'jay-babu/mason-nvim-dap.nvim',
+			{
+				'jay-babu/mason-nvim-dap.nvim',
+				cond = not vim.g.started_by_firenvim,
+			},
 			'b0o/schemastore.nvim',
 		},
 		config = function()
@@ -63,6 +66,9 @@ local plugins = {
 					cmd = { 'pnpm', 'exec', 'relay-compiler', 'lsp' },
 				},
 				graphql = {},
+				-- relay_lsp = {
+				-- 	cmd = { 'pnpm', 'exec', 'relay-compiler', 'lsp' },
+				-- },
 
 				-- Other languages
 				rust_analyzer = {},
@@ -160,11 +166,13 @@ local plugins = {
 			-- Manually setup non mason lsps
 			setup_lsp 'relay_lsp'
 
-			require('mason-nvim-dap').setup {
-				automatic_installation = false,
-				handlers = {},
-				ensure_installed = {},
-			}
+			if not vim.g.started_by_firenvim then
+				require('mason-nvim-dap').setup {
+					automatic_installation = false,
+					handlers = {},
+					ensure_installed = {},
+				}
+			end
 		end,
 	},
 }

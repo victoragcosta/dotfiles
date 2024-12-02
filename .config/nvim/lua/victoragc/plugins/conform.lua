@@ -42,6 +42,8 @@ local plugins = {
 				svelte = { 'prettierd' },
 				markdown = { 'prettierd' },
 				graphql = { 'prettierd' },
+				html = { 'prettierd' },
+				css = { 'prettierd' },
 
 				rust = { 'rustfmt' },
 			},

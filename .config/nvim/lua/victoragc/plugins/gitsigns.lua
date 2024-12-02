@@ -41,62 +41,62 @@ local plugins = {
 
 				-- Actions
 				-- visual mode
-				map('v', '<leader>hs', function()
+				map('v', '<leader>Hs', function()
 					gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
 				end, { desc = 'stage git hunk' })
-				map('v', '<leader>hr', function()
+				map('v', '<leader>Hr', function()
 					gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
 				end, { desc = 'reset git hunk' })
 				-- normal mode
 				map(
 					'n',
-					'<leader>hs',
+					'<leader>Hs',
 					gitsigns.stage_hunk,
 					{ desc = 'git [s]tage hunk' }
 				)
 				map(
 					'n',
-					'<leader>hr',
+					'<leader>Hr',
 					gitsigns.reset_hunk,
 					{ desc = 'git [r]eset hunk' }
 				)
 				map(
 					'n',
-					'<leader>hS',
+					'<leader>HS',
 					gitsigns.stage_buffer,
 					{ desc = 'git [S]tage buffer' }
 				)
 				map(
 					'n',
-					'<leader>hu',
+					'<leader>Hu',
 					gitsigns.undo_stage_hunk,
 					{ desc = 'git [u]ndo stage hunk' }
 				)
 				map(
 					'n',
-					'<leader>hR',
+					'<leader>HR',
 					gitsigns.reset_buffer,
 					{ desc = 'git [R]eset buffer' }
 				)
 				map(
 					'n',
-					'<leader>hp',
+					'<leader>Hp',
 					gitsigns.preview_hunk,
 					{ desc = 'git [p]review hunk' }
 				)
 				map(
 					'n',
-					'<leader>hb',
+					'<leader>Hb',
 					gitsigns.blame_line,
 					{ desc = 'git [b]lame line' }
 				)
 				map(
 					'n',
-					'<leader>hd',
+					'<leader>Hd',
 					gitsigns.diffthis,
 					{ desc = 'git [d]iff against index' }
 				)
-				map('n', '<leader>hD', function()
+				map('n', '<leader>HD', function()
 					gitsigns.diffthis '@'
 				end, { desc = 'git [D]iff against last commit' })
 				-- Toggles

@@ -15,7 +15,7 @@ local plugins = {
 				{ '<leader>c', group = '[C]ode' },
 				{ '<leader>d', group = '[D]ocument' },
 				{ '<leader>d!', group = '[D]ocument [!]force' },
-				{ '<leader>h', group = 'Git [H]unk' },
+				{ '<leader>H', group = 'Git [H]unk' },
 				{ '<leader>o', group = '[O]il file manager' },
 				{ '<leader>r', group = '[R]ename' },
 				{ '<leader>s', group = '[S]earch' },
@@ -23,7 +23,7 @@ local plugins = {
 				{ '<leader>tw', group = '[T]oggle Tail[w]ind' },
 				{ '<leader>x', group = 'E[x]ecute' },
 				{ '<leader>xc', group = '[C]olor' },
-				{ '<leader>h', group = 'Git [H]unk', mode = 'v' },
+				{ '<leader>H', group = 'Git [H]unk', mode = 'v' },
 			}
 		end,
 	},

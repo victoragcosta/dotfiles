@@ -14,17 +14,19 @@ local plugins = {
 			require('mini.bufremove').setup {}
 
 			-- Scope indentation visualizer
-			require('mini.indentscope').setup()
-			vim.api.nvim_create_autocmd('TermOpen', {
-				desc = 'Disable mini.indentscope when in terminal',
-				group = vim.api.nvim_create_augroup(
-					'victoragc-mini-indentscope',
-					{ clear = true }
-				),
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
+			if not vim.g.vscode then
+				require('mini.indentscope').setup()
+				vim.api.nvim_create_autocmd('TermOpen', {
+					desc = 'Disable mini.indentscope when in terminal',
+					group = vim.api.nvim_create_augroup(
+						'victoragc-mini-indentscope',
+						{ clear = true }
+					),
+					callback = function()
+						vim.b.miniindentscope_disable = true
+					end,
+				})
+			end
 
 			-- Notification system
 			local notify = require 'mini.notify'

@@ -59,9 +59,16 @@ vim.keymap.set('t', 'fjfj', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Keybinds to make buffer and split navigation and creation easier.
 
--- Use <Tab> and <Shift>+<Tab> to change tabs quickly
-vim.keymap.set('n', '<Tab>', '<Cmd>tabn<CR>', { desc = 'Go to next tab' })
-vim.keymap.set('n', '<S-Tab>', '<Cmd>tabp<CR>', { desc = 'Go to previous tab' })
+-- Use <Tab> and <Shift>+<Tab> to change buffers quickly
+vim.keymap.set('n', '<Tab>', '<Cmd>bn<CR>', { desc = 'Go to next buffer' })
+vim.keymap.set(
+	'n',
+	'<S-Tab>',
+	'<Cmd>bp<CR>',
+	{ desc = 'Go to previous buffer' }
+)
+-- gt for next tab
+-- gT for previous tab
 vim.keymap.set('n', '<C-t>', '<Cmd>tabnew<CR>', { desc = 'Create a new tab' })
 vim.keymap.set('n', '<C-x>', '<Cmd>tabc<CR>', { desc = 'Close current tab' })
 
