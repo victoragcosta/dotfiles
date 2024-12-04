@@ -5,7 +5,7 @@
 vim.opt.hlsearch = true
 vim.keymap.set(
 	'n',
-	'<leader>fj',
+	'<Esc>',
 	'<cmd>nohlsearch<CR>',
 	{ desc = 'Clear highlights' }
 )
@@ -150,9 +150,6 @@ vim.keymap.set('n', '<S-Left>', '<Cmd>vertical resize -2<CR>')
 vim.keymap.set('n', '<S-Right>', '<Cmd>vertical resize +2<CR>')
 vim.keymap.set('n', '<S-Up>', '<Cmd>resize +2<CR>')
 vim.keymap.set('n', '<S-Down>', '<Cmd>resize -2<CR>')
-
--- Set easier to press melody to exit modes
-vim.keymap.set({ 'i', 'v' }, 'fj', '<Esc>', { desc = 'Exit mode' })
 
 -- Set visual block mode as a possible keychord due to widows terminal restrictions
 vim.keymap.set('n', '<M-v>', '<C-v>', { desc = '[V]isual block mode' })
