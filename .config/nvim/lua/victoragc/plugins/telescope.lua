@@ -5,7 +5,7 @@ local plugins = {
 		branch = '0.1.x',
 		lazy = false,
 		dependencies = {
-			'nvim-lua/plenary.nvim',
+			{ 'nvim-lua/plenary.nvim', rocks = { enabled = false } },
 			{ -- If encountering errors, see telescope-fzf-native README for installation instructions
 				'nvim-telescope/telescope-fzf-native.nvim',
 
