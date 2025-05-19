@@ -138,6 +138,7 @@
       bottles
       wine
       freecad
+      stremio
     ];
   };
 
