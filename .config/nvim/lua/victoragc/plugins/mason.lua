@@ -12,6 +12,8 @@ local plugins = {
 				cond = not vim.g.started_by_firenvim,
 			},
 			'b0o/schemastore.nvim',
+			{ 'mason-org/mason.nvim', version = '^1.0.0' },
+			{ 'mason-org/mason-lspconfig.nvim', version = '^1.0.0' },
 		},
 		config = function()
 			-- Can be opened with :Mason
@@ -165,7 +167,7 @@ local plugins = {
 				},
 			}
 			-- Manually setup non mason lsps
-			setup_lsp 'relay_lsp'
+			-- setup_lsp 'relay_lsp'
 
 			if not vim.g.started_by_firenvim then
 				require('mason-nvim-dap').setup {

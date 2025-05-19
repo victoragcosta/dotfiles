@@ -10,6 +10,7 @@
     gzip
     unzip
     ripgrep
+    fzf
     fd
     gcc
     tree-sitter
@@ -18,6 +19,13 @@
     # programming languages / neovim dependencies
     nodejs_22
     rustup
+
+    # programming languages
+    typescript
+
+    # formatters
+    stylua
+    prettierd
 
     # Node tooling
     pnpm
