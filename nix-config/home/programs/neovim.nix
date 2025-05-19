@@ -3,6 +3,7 @@
     neovim
   ];
   environment.systemPackages = with pkgs; [
+    # Neovim dependencies
     git
     wget
     gnutar
@@ -14,8 +15,11 @@
     tree-sitter
     wl-clipboard
 
-    # programming languages
+    # programming languages / neovim dependencies
     nodejs_22
     rustup
+
+    # Node tooling
+    pnpm
   ];
 }
