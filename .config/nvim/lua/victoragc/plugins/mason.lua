@@ -105,6 +105,7 @@ local plugins = {
 						},
 					},
 				},
+				nil_ls = {},
 			}
 
 			-- List of debug adapters to install
