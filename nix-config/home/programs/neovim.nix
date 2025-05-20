@@ -22,6 +22,9 @@
 
     # programming languages
     typescript
+    typescript-language-server
+    svelte-language-server
+    tailwindcss-language-server
 
     # formatters
     stylua
