@@ -64,9 +64,6 @@ local plugins = {
 						},
 					},
 				},
-				relay_lsp = {
-					cmd = { 'pnpm', 'exec', 'relay-compiler', 'lsp' },
-				},
 				graphql = {},
 				-- relay_lsp = {
 				-- 	cmd = { 'pnpm', 'exec', 'relay-compiler', 'lsp' },
