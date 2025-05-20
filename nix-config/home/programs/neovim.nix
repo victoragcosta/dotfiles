@@ -1,4 +1,10 @@
 {pkgs, ...}: {
+  # Install fonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = ["FiraCode"]; })
+    fira-code
+  ];
+
   users.users.cubo.packages = with pkgs; [ 
     neovim
   ];

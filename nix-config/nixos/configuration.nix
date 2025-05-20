@@ -47,6 +47,11 @@
     };
   };
 
+  # Cedilla fix
+  environment.variables = {
+    GTK_IM_MODULE = "cedilla";
+    QT_IM_MODULE = "cedilla";
+  };
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -96,52 +101,6 @@
     };
   };
 
-  # Install fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"]; })
-    fira-code
-  ];
-
-  # Enable ZSH shell
-  programs.zsh = {
-    enable = true;
-    enableBashCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-  programs.zsh.ohMyZsh = {
-    enable = true;
-  };
-  environment.shells = [ pkgs.zsh ];
-
-  # Set users' defaults
-  environment.variables = {
-    GTK_IM_MODULE = "cedilla";
-    QT_IM_MODULE = "cedilla";
-  };
-  users.defaultUserShell = pkgs.zsh;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.cubo = {
-    isNormalUser = true;
-    description = "Victor";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-      # kdePackages.kate
-      vial
-      thunderbird
-      spotify
-      orca-slicer
-      zapzap
-      discord
-      bottles
-      wine
-      freecad
-      stremio
-    ];
-  };
-
   # Experimental
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -176,26 +135,6 @@
 
   # setup virtualisation
   virtualisation.spiceUSBRedirection.enable = true;
-
-  # List programs that you want to enable
-
-  # Add flatpak
-  services.flatpak.enable = true;
-  systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
-
-  # Add steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
