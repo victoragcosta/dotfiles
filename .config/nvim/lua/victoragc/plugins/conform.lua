@@ -46,6 +46,7 @@ local plugins = {
 				css = { 'prettierd' },
 
 				rust = { 'rustfmt' },
+				nix = { 'nixfmt' },
 			},
 		},
 	},

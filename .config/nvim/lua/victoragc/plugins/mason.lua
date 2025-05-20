@@ -119,6 +119,7 @@ local plugins = {
 				'prettier',
 				'prettierd',
 				'markdownlint',
+				'nixfmt',
 			}
 
 			-- List of linters to install
