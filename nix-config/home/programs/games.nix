@@ -1,4 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, make-pkgs-unstable, ... }:
+let
+  unstable-pkgs = make-pkgs-unstable {
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        # Needed for vintagestory
+        "dotnet-runtime-7.0.20"
+      ];
+    };
+  };
+in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -23,9 +34,9 @@
       true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
-  users.users.cubo.packages = with pkgs; [ vintagestory ];
+  users.users.cubo.packages = with unstable-pkgs; [ vintagestory ];
   # Needed for vintagestory
-  nixpkgs.config.permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
+  # nixpkgs.config.permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
 
   environment.systemPackages = with pkgs;
     [
