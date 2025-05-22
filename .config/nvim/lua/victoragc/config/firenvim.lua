@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd({ 'UIEnter' }, {
 			)
 			vim.api.nvim_create_autocmd('BufEnter', {
 				desc = "Infer svelte filetype for svelte's REPL",
-				pattern = 'svelte-5-preview.vercel.app__*.txt',
+				pattern = 'svelte.dev_*.txt',
 				group = autofiletype_group,
 				callback = function()
 					vim.bo.filetype = 'svelte'
