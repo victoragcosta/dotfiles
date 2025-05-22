@@ -102,38 +102,59 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# ========================== #
+# ==== PACKAGE MANAGERS ==== #
+# ========================== #
+
+# ==== Brew ==== #
 # Add brew to path
 if [ ! -f /etc/NIXOS ]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-# ==== Neovim ==== #
-export PATH="/opt/nvim/bin:$PATH"
-# ==== /Neovim ==== #
-
-# ===  Android configs === #
-export PATH="/opt/android-studio/bin:$PATH"
-
-export JAVA_HOME=/opt/android-studio/jbr
-export PATH="$JAVA_HOME/bin:$PATH"
-
-export ANDROID_HOME=/usr/local/lib/Android
-export PATH="$ANDROID_HOME/tools:$PATH"
-export PATH="$ANDROID_HOME/platform-tools:$PATH"
-export PATH="$ANDROID_HOME/tools/bin:$PATH"
-export PATH="$ANDROID_HOME/platform-tools/bin:$PATH"
-
-export NDK_HOME="$ANDROID_HOME/ndk/27.0.11718014"
-
-export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
-# === /Android configs === #
-
-# ====  asdf configs ==== #
+# ==== asdf ==== #
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-# ==== /asdf configs ==== #
+# ==== /asdf ==== #
+
+# ==== pnpm ==== #
+export PNPM_HOME="/home/cubo/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# ==== /pnpm ==== #
+
+# ================== #
+# ==== PROGRAMS ==== #
+# ================== #
+
+# ==== Local programs ==== #
+export PATH="/home/cubo/.local/bin:$PATH"
+# ==== /Local programs ==== #
+
+# ==== Neovim ==== #
+export PATH="/opt/nvim/bin:$PATH"
+# ==== /Neovim ==== #
+
+# ===  Android configs === #
+# export PATH="/opt/android-studio/bin:$PATH"
+#
+# export JAVA_HOME=/opt/android-studio/jbr
+# export PATH="$JAVA_HOME/bin:$PATH"
+#
+# export ANDROID_HOME=/usr/local/lib/Android
+# export PATH="$ANDROID_HOME/tools:$PATH"
+# export PATH="$ANDROID_HOME/platform-tools:$PATH"
+# export PATH="$ANDROID_HOME/tools/bin:$PATH"
+# export PATH="$ANDROID_HOME/platform-tools/bin:$PATH"
+#
+# export NDK_HOME="$ANDROID_HOME/ndk/27.0.11718014"
+#
+# export CAPACITOR_ANDROID_STUDIO_PATH="/mnt/c/Program Files/Android/Android Studio/bin/studio64.exe"
+# === /Android configs === #
 
