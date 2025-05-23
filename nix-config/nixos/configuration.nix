@@ -5,10 +5,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -95,11 +94,7 @@
   # Enable bluetooth support
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  hardware.bluetooth.settings = {
-    General = {
-      Experimental = true;
-    };
-  };
+  hardware.bluetooth.settings = { General = { Experimental = true; }; };
 
   # Experimental
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -121,6 +116,8 @@
     ghostty
     brave
     vlc
+    vlc-bittorrent
+    torrential
     gparted
     kdePackages.kaccounts-providers
     kdePackages.kaccounts-integration
@@ -150,10 +147,7 @@
   services.udisks2.enable = true;
 
   # Configure and install udev related packages
-  services.udev.packages = with pkgs; [
-    vial
-    via
-  ];
+  services.udev.packages = with pkgs; [ vial via ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
