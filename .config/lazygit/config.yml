@@ -1,2 +1,4 @@
 os:
   editPreset: nvim
+git:
+  autoForwardBranches: none
