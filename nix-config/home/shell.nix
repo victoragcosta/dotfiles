@@ -1,10 +1,6 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   # Install fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"]; })
-    fira-code
-  ];
+  fonts.packages = with pkgs; [ nerd-fonts.fira-code fira-code ];
 
   # Enable ZSH shell
   programs.zsh = {
@@ -13,9 +9,7 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
-  programs.zsh.ohMyZsh = {
-    enable = true;
-  };
+  programs.zsh.ohMyZsh = { enable = true; };
   environment.shells = [ pkgs.zsh ];
 
   users.defaultUserShell = pkgs.zsh;

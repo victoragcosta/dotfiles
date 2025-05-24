@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{ pkgs, make-pkgs-unstable, ... }:
+let
+  unstable-pkgs = make-pkgs-unstable {
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        # Needed for vintagestory
+        "dotnet-runtime-7.0.20"
+      ];
+    };
+  };
+in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -12,7 +23,7 @@
     '';
   };
 
-  users.users.cubo.packages = with pkgs; [ 
+  users.users.cubo.packages = with pkgs; [
     vial
     thunderbird
     spotify
@@ -22,7 +33,7 @@
     bottles
     wine
     freecad
-    stremio
+    unstable-pkgs.stremio
     android-tools
   ];
 
