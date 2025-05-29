@@ -1,14 +1,5 @@
 { pkgs, make-pkgs-unstable, ... }:
-let
-  unstable-pkgs = make-pkgs-unstable {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        # Needed for vintagestory
-        "dotnet-runtime-7.0.20"
-      ];
-    };
-  };
+let unstable-pkgs = make-pkgs-unstable { config = { allowUnfree = true; }; };
 in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -32,7 +23,7 @@ in {
     discord
     bottles
     wine
-    freecad
+    unstable-pkgs.freecad
     unstable-pkgs.stremio
     android-tools
   ];
