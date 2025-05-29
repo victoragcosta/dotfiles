@@ -12,7 +12,6 @@ in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -113,12 +112,12 @@ in {
     git
     wget
     gnutar
+    usbutils
     lazygit
     stow
     ghostty
-    unstable-pkgs.brave
+    brave
     vlc
-    vlc-bittorrent
     torrential
     gparted
     kdePackages.kalk
@@ -147,6 +146,9 @@ in {
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Enable fwupd to update BIOS and other firmwares
+  services.fwupd.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
