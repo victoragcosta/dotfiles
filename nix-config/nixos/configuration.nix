@@ -121,12 +121,6 @@ in {
     vlc-bittorrent
     torrential
     gparted
-    kdePackages.kaccounts-providers
-    kdePackages.kaccounts-integration
-    kdePackages.libkgapi
-    kdePackages.kio
-    kdePackages.kio-extras
-    kdePackages.kio-gdrive
     kdePackages.kalk
     gamemode
     quickemu
