@@ -19,6 +19,7 @@ in {
     thunderbird
     spotify
     orca-slicer
+    kicad
     zapzap
     discord
     bottles
