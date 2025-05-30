@@ -27,6 +27,8 @@ in {
     unstable-pkgs.freecad
     unstable-pkgs.stremio
     android-tools
+    mongodb
+    mongodb-compass
   ];
 
 }
