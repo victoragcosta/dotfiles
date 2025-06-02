@@ -21,6 +21,18 @@
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "amdgpu.dcdebugmask=0x10" ];
 
+  # pin older kernel
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_6.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+        url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+        sha256 = "sha256-HYKoJkLSgcMdhvcwG8VeEqip+cBFMuJJ74rm/n3CN+w=";
+      };
+      version = "6.6.92";
+      modDirVersion = "6.6.92";
+    };
+  });
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/33bb10f8-a9a9-4975-b585-4008c2fd7cc8";
     fsType = "ext4";
