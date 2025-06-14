@@ -16,20 +16,22 @@
     # "r8169"
     # "btusb"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "amdgpu.dcdebugmask=0x10" ];
+  boot.kernelParams = [
+    # "amdgpu.dcdebugmask=0x10"
+  ];
 
-  # pin older kernel
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_6.override {
+  # pin kernel
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
     argsOverride = rec {
       src = pkgs.fetchurl {
         url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-        sha256 = "sha256-HYKoJkLSgcMdhvcwG8VeEqip+cBFMuJJ74rm/n3CN+w=";
+        sha256 = "sha256-wKV1Yw8mA6ILsGQfjfj5VeRsnXrB+ui1SyExbmtSolQ=";
       };
-      version = "6.6.92";
-      modDirVersion = "6.6.92";
+      version = "6.12.33";
+      modDirVersion = "6.12.33";
     };
   });
 
