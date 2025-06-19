@@ -19,11 +19,8 @@ in {
     thunderbird
     spotify
     orca-slicer
-    kicad
     zapzap
     discord
-    bottles
-    wine
     unstable-pkgs.freecad
     unstable-pkgs.stremio
     android-tools
