@@ -38,9 +38,11 @@ in {
   # Needed for vintagestory
   # nixpkgs.config.permittedInsecurePackages = [ "dotnet-runtime-7.0.20" ];
 
-  environment.systemPackages = with pkgs;
-    [
-      # Package that helps games run with priority
-      gamemode
-    ];
+  environment.systemPackages = with pkgs; [
+    # Package that helps games run with priority
+    gamemode
+    # Game backup
+    ludusavi
+    rclone # for cloud backup with ludusavi
+  ];
 }
