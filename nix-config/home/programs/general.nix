@@ -26,6 +26,7 @@ in {
     android-tools
     mongodb
     mongodb-compass
+    easyeffects
   ];
 
 }
