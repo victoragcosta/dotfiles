@@ -2,13 +2,12 @@
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>,próxima,proxima,prox,próx,avançar,avancar",
   "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<,anterior,ant,voltar",
   "grabBackFocus": true,
-  "searchEngines": "sp: https://www.startpage.com/do/search?q=%s Startpage\n\ng: https://www.google.com/search?q=%s Google\n\nw: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ny: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# b: https://www.bing.com/search?q=%s Bing\n# d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: https://www.amazon.com/s/?field-keywords=%s\n# qw: https://www.qwant.com/?q=%s Qwant",
-  "searchUrl": "https://www.startpage.com/do/search?q=",
-  "settingsVersion": "2.1.2",
+  "searchEngines": "sp: https://www.startpage.com/do/search?q=%s Startpage\n\ng: https://www.google.com/search?q=%s Google\nd: https://duckduckgo.com/?q=%s DuckDuckGo\n\nw: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ny: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\ngh: https://github.com/search?q=%s&type=repositories Github repository\n!gh: https://www.github.com/%S Github repository direct link\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# b: https://www.bing.com/search?q=%s Bing\n# az: https://www.amazon.com/s/?field-keywords=%s\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "settingsVersion": "2.2.1",
   "exclusionRules": [
     {
-      "passKeys": "sdghr",
-      "pattern": "https://*youtube.com/watch?*"
+      "passKeys": "",
+      "pattern": "https?://www.youtube.com/*"
     }
   ]
 }
