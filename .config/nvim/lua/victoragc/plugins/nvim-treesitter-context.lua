@@ -3,7 +3,12 @@ local plugins = {
 	{
 		'nvim-treesitter/nvim-treesitter-context',
 		lazy = false,
-		opts = {},
+		opts = {
+			min_window_height = 36,
+			max_lines = 6,
+			multiline_threshold = 2,
+			trim_scope = 'outer',
+		},
 		keys = {
 			{
 				'<leader>tc',
