@@ -6,7 +6,7 @@ local plugins = {
 		opts = {
 			min_window_height = 36,
 			max_lines = 6,
-			multiline_threshold = 2,
+			multiline_threshold = 1,
 			trim_scope = 'outer',
 		},
 		keys = {
