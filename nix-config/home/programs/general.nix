@@ -27,6 +27,9 @@ in {
     mongodb
     mongodb-compass
     easyeffects
+    libreoffice-qt6-fresh
   ];
 
+  # Fix libreoffice using x11 instead of wayland
+  environment.variables = { QT_QPA_PLATFORM = "wayland"; };
 }
