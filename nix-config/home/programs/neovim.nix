@@ -33,5 +33,6 @@
 
     # Node tooling
     pnpm
+    nodemon
   ];
 }
