@@ -24,16 +24,16 @@
   ];
 
   # pin kernel
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
-    argsOverride = rec {
-      src = pkgs.fetchurl {
-        url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-        sha256 = "sha256-wKV1Yw8mA6ILsGQfjfj5VeRsnXrB+ui1SyExbmtSolQ=";
-      };
-      version = "6.12.33";
-      modDirVersion = "6.12.33";
-    };
-  });
+  # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
+  #   argsOverride = rec {
+  #     src = pkgs.fetchurl {
+  #       url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
+  #       sha256 = "sha256-wKV1Yw8mA6ILsGQfjfj5VeRsnXrB+ui1SyExbmtSolQ=";
+  #     };
+  #     version = "6.12.33";
+  #     modDirVersion = "6.12.33";
+  #   };
+  # });
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/33bb10f8-a9a9-4975-b585-4008c2fd7cc8";
