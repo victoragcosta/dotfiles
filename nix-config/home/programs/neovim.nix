@@ -34,5 +34,6 @@
     # Node tooling
     pnpm
     nodemon
+    eslint_d
   ];
 }
