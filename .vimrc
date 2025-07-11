@@ -53,6 +53,10 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+set termguicolors
+set rtp+=~/.local/share/nvim/lazy/tokyonight.nvim/extras/vim
+colorscheme tokyonight
+
 if &term =~ '^xterm'
   " enter vim
   autocmd VimEnter * silent !echo -ne "\e[1 q"
