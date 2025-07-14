@@ -68,12 +68,6 @@ local plugins = {
 				)
 				map(
 					'n',
-					'<leader>Hu',
-					gitsigns.undo_stage_hunk,
-					{ desc = 'git [u]ndo stage hunk' }
-				)
-				map(
-					'n',
 					'<leader>HR',
 					gitsigns.reset_buffer,
 					{ desc = 'git [R]eset buffer' }
@@ -90,6 +84,7 @@ local plugins = {
 					gitsigns.blame_line,
 					{ desc = 'git [b]lame line' }
 				)
+				map('n', '<leader>HB', gitsigns.blame, { desc = 'git [B]lame buffer' })
 				map(
 					'n',
 					'<leader>Hd',
@@ -99,6 +94,12 @@ local plugins = {
 				map('n', '<leader>HD', function()
 					gitsigns.diffthis '@'
 				end, { desc = 'git [D]iff against last commit' })
+				map(
+					'n',
+					'<leader>Hq',
+					gitsigns.setqflist,
+					{ desc = 'git [q]uickfix list' }
+				)
 				-- Toggles
 				map(
 					'n',
@@ -108,9 +109,16 @@ local plugins = {
 				)
 				map(
 					'n',
-					'<leader>tD',
-					gitsigns.toggle_deleted,
-					{ desc = '[T]oggle git show [D]eleted' }
+					'<leader>tH',
+					gitsigns.preview_hunk_inline,
+					{ desc = '[T]oggle git preview [H]unk inline' }
+				)
+
+				map(
+					{ 'o', 'x' },
+					'ih',
+					gitsigns.select_hunk,
+					{ desc = '[i]nside [h]unk' }
 				)
 			end,
 		},
