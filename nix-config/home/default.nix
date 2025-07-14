@@ -1,3 +1,7 @@
 { ... }: {
-  imports = [ ./programs/default.nix ./shell.nix ./input-methods.nix ];
+  imports = [
+    # keep separate lines
+    ./programs/default.nix
+    ./shell.nix
+  ];
 }
