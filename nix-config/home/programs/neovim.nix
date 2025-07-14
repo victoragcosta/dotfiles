@@ -2,7 +2,11 @@
   # Install fonts
   fonts.packages = with pkgs; [ nerd-fonts.fira-code fira-code ];
 
-  users.users.cubo.packages = with pkgs; [ neovim ];
+  users.users.cubo.packages = with pkgs; [
+    neovim
+    # some gui for neovim
+    neovide
+  ];
   environment.systemPackages = with pkgs; [
     # Neovim dependencies
     git
