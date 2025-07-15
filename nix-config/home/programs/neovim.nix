@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
     # Neovim dependencies
     git
+    delta
     wget
     gnutar
     gzip

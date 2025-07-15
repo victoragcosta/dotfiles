@@ -5,6 +5,7 @@
 	editor = nvim
 [diff]
 	tool = nvimdiff
+	algorithm = histogram
 [difftool]
 	prompt = false
 [merge]
