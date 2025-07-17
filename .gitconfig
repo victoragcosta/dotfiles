@@ -3,12 +3,21 @@
 	name = Victor André Gris Costa
 [core]
 	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+	side-by-side = true
+	line-numbers = true
 [diff]
 	tool = nvimdiff
 	algorithm = histogram
 [difftool]
 	prompt = false
 [merge]
+	conflictstyle = zdiff3
 	tool = nvimdiff
 [mergetool]
 	prompt = true
