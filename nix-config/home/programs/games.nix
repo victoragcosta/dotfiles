@@ -34,6 +34,11 @@ in {
     localNetworkGameTransfers.openFirewall = true;
     # Enables protontricks for better tinkering with game environments
     protontricks.enable = true;
+    extraCompatPackages = with pkgs;
+      [
+        # For better proton environments
+        proton-ge-bin
+      ];
   };
 
   users.users.cubo.packages = with unstable-pkgs; [ vintagestory ];
@@ -44,5 +49,7 @@ in {
     # Game backup
     ludusavi
     rclone # for cloud backup with ludusavi
+    # For better proton environments
+    protonup-qt
   ];
 }
