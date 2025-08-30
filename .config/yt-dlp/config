@@ -1,0 +1,11 @@
+-f "bv*[height=1440]+ba/b"
+-o "%(playlist_index)s - %(title)s.%(ext)s"
+--restrict-filenames
+--embed-thumbnail
+--embed-metadata
+--write-subs
+--write-auto-subs
+--sub-langs en
+-t mkv
+-t sleep
+-N 4

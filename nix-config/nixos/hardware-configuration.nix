@@ -23,6 +23,8 @@
     # "amdgpu.dcdebugmask=0x10"
   ];
 
+  hardware.opengl.enable = true;
+
   # pin kernel
   # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
   #   argsOverride = rec {

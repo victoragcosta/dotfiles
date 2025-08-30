@@ -28,6 +28,7 @@ in {
     mongodb-compass
     easyeffects
     libreoffice-qt6-fresh
+    yt-dlp
   ];
 
   # Fix libreoffice using x11 instead of wayland
