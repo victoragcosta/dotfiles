@@ -41,7 +41,7 @@ in {
       ];
   };
 
-  users.users.cubo.packages = with unstable-pkgs; [ vintagestory ];
+  users.users.cubo.packages = [ unstable-pkgs.vintagestory pkgs.prismlauncher ];
 
   environment.systemPackages = with pkgs; [
     # Package that helps games run with priority
