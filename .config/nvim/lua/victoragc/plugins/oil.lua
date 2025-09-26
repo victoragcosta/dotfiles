@@ -2,7 +2,20 @@
 local plugins = {
 	{
 		'stevearc/oil.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		dependencies = {
+			{
+				'nvim-tree/nvim-web-devicons',
+				opts = {
+					override_by_extension = {
+						['local'] = {
+							icon = ' ',
+							name = 'DevIconSecret',
+							color = '#999999',
+						},
+					},
+				},
+			},
+		},
 		config = function()
 			-- remaps
 			vim.keymap.set(

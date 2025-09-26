@@ -77,3 +77,9 @@ vim.opt.termguicolors = true
 
 -- Set what will be saved in sessions
 vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+
+vim.filetype.add {
+	pattern = {
+		['.*.env.*.local'] = 'sh',
+	},
+}
