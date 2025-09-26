@@ -22,7 +22,7 @@ in {
     zapzap
     discord
     unstable-pkgs.freecad
-    unstable-pkgs.stremio
+    stremio
     android-tools
     mongodb
     mongodb-compass
