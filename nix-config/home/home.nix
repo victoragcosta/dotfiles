@@ -1,0 +1,79 @@
+{...}: {
+
+  # Enable and configure Plasma settings
+  programs.plasma = {
+    enable = true;
+
+    #
+    # System Settings (Mimic System Settings GUI order)
+    #
+    # System Settings > Keyboard > Keyboard
+    input.keyboard = {
+      numlockOnStartup = "on";
+      # options = ["ctrl:nocaps"];
+    };
+
+    # System Settings > Keyboard > Shortcuts > Plasma Manager
+    hotkeys.commands = {
+      launch-brave = {
+        name = "Launch Brave";
+        key = "Meta+Shift+B";
+        command = "brave";
+      };
+    };
+
+    # System Settings > Text & Fonts > Fonts
+    fonts = {
+      fixedWidth = {
+        family = "FiraCode Nerd Font Mono";
+        pointSize = 10;
+      };
+    };
+
+    kwin = {
+      # System Settings > Window Management > Desktop Effects > ...
+      effects = {
+        blur = {
+          enable = true;
+          noiseStrength = 1;
+          strength = 1;
+        };
+
+        slideBack.enable = true;
+
+        translucency.enable = true;
+
+        wobblyWindows.enable = true;
+      };
+    };
+
+    # System Settings > Screen Locking > Configure Appearance
+    kscreenlocker = {
+      autoLock = false;
+      # timeout = 0;
+    };
+
+    #
+    # Spectacle
+    #
+    spectacle = {
+      # Spectacle > Configure Spectacle > Shortcuts
+      shortcuts = {
+        captureActiveWindow = "Meta+@";
+        captureCurrentMonitor = "Meta+#";
+        captureRectangularRegion = "Meta+S";
+      };
+    };
+  };
+
+  # Set Home Manager state version to match NixOS system.stateVersion
+  home.stateVersion = "25.05";
+
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "cubo";
+  home.homeDirectory = "/home/cubo";
+
+  # Optional: Allow Home Manager to manage itself
+  programs.home-manager.enable = true;
+}

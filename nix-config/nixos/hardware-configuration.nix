@@ -25,25 +25,13 @@
 
   hardware.graphics.enable = true;
 
-  # pin kernel
-  # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_12.override {
-  #   argsOverride = rec {
-  #     src = pkgs.fetchurl {
-  #       url = "mirror://kernel/linux/kernel/v6.x/linux-${version}.tar.xz";
-  #       sha256 = "sha256-wKV1Yw8mA6ILsGQfjfj5VeRsnXrB+ui1SyExbmtSolQ=";
-  #     };
-  #     version = "6.12.33";
-  #     modDirVersion = "6.12.33";
-  #   };
-  # });
-
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/33bb10f8-a9a9-4975-b585-4008c2fd7cc8";
+    device = "/dev/disk/by-uuid/a947cf76-8e40-428b-9464-8bdcfaa87ca4";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B549-65FD";
+    device = "/dev/disk/by-uuid/53A2-630C";
     fsType = "vfat";
     options = [ "fmask=0077" "dmask=0077" ];
   };
@@ -59,7 +47,7 @@
   };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/d66480e5-d08c-4402-a44d-b61a39e0dad9"; }];
+    [{ device = "/dev/disk/by-uuid/dd09aaf7-81a0-4bd6-a19a-d958cd12460f"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -72,4 +60,5 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
+	
 }
