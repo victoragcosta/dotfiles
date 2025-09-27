@@ -52,20 +52,9 @@ in {
     QT_IM_MODULE = "cedilla";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "intl";
-  };
 
   # Configure console keymap
   console.keyMap = "us-acentos";
@@ -88,9 +77,6 @@ in {
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Enable bluetooth support
   hardware.bluetooth.enable = true;
