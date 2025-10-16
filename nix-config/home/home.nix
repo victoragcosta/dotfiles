@@ -1,4 +1,7 @@
-{...}: {
+{ ... }: {
+
+  # To easily find changed configurations you can run
+  # `nix run github:nix-community/plasma-manager/trunk#rc2nix > plasma.nix`
 
   # Enable and configure Plasma settings
   programs.plasma = {
@@ -61,9 +64,19 @@
       shortcuts = {
         captureActiveWindow = "Meta+@";
         captureCurrentMonitor = "Meta+#";
-        captureRectangularRegion = "Meta+S";
+        captureRectangularRegion = "Meta+Shift+S";
+        recordRegion = "Meta+Shift+R";
+        recordScreen = "Meta+R";
       };
     };
+
+    # Other shortcuts
+    shortcuts = {
+      "services/com.mitchellh.ghostty.desktop"."_launch" = "Meta+T";
+      "services/org.kde.konsole.desktop"."_launch" = [ ];
+      "services/org.kde.plasma.emojier.desktop"."_launch" = "Meta+.";
+    };
+
   };
 
   # Set Home Manager state version to match NixOS system.stateVersion
