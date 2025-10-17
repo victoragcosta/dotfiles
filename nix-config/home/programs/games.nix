@@ -41,15 +41,6 @@ in {
       ];
   };
 
-  # Add shared libraries to all programs in the system
-  programs.nix-ld = {
-    enable = true;
-    libraries = [
-      # needed for minecraft MCEF
-      pkgs.nss
-    ];
-  };
-
   users.users.cubo.packages = [
     unstable-pkgs.vintagestory
     # Minecraft
@@ -86,20 +77,6 @@ in {
           "--prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath extraLibs}"
         ];
       }))
-    # (pkgs.runCommand "prismlauncher" {
-    #   nativeBuildInputs = [ pkgs.makeWrapper ];
-    # } ''
-    #   makeWrapper ${pkgs.prismlauncher}/bin/prismlauncher $out/bin/prismlauncher \
-    #   --set NIX_LD ${
-    #     pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"
-    #   } \
-    #   --set NIX_LD_LIBRARY_PATH ${
-    #     pkgs.lib.makeLibraryPath [ pkgs.nss pkgs.stdenv.cc.cc ]
-    #   } \
-    #   --prefix LD_LIBRARY_PATH : ${
-    #     pkgs.lib.makeLibraryPath [ pkgs.nss pkgs.stdenv.cc.cc ]
-    #   }
-    # '')
   ];
 
   environment.systemPackages = with pkgs; [
