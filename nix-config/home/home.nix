@@ -42,10 +42,10 @@
           strength = 1;
         };
         fallApart.enable = true;
-        fps.enable = true;
+        fps.enable = false; # useful for benchmarking
         minimization = {
           animation = "magiclamp";
-          duration = 150;
+          duration = 250;
         };
         slideBack.enable = true;
         translucency.enable = true;
