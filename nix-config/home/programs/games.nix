@@ -41,7 +41,66 @@ in {
       ];
   };
 
-  users.users.cubo.packages = [ unstable-pkgs.vintagestory pkgs.prismlauncher ];
+  # Add shared libraries to all programs in the system
+  programs.nix-ld = {
+    enable = true;
+    libraries = [
+      # needed for minecraft MCEF
+      pkgs.nss
+    ];
+  };
+
+  users.users.cubo.packages = [
+    unstable-pkgs.vintagestory
+    # Minecraft
+    (pkgs.prismlauncher.overrideAttrs (oldAttrs:
+      let
+        extraLibs = with pkgs; [
+          glib
+          nss
+          nspr
+          atk
+          libdrm
+          expat
+          libxkbcommon
+          libgbm
+          gtk3
+          pango
+          cairo
+          alsa-lib
+          dbus
+          at-spi2-core
+          cups
+          udev
+          systemd
+          xorg.libX11
+          xorg.libXcomposite
+          xorg.libXdamage
+          xorg.libXext
+          xorg.libXfixes
+          xorg.libXrandr
+        ];
+      in {
+        buildInputs = (oldAttrs.buildInputs or [ ]) ++ extraLibs;
+        qtWrapperArgs = (oldAttrs.qtWrapperArgs or [ ]) ++ [
+          "--prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath extraLibs}"
+        ];
+      }))
+    # (pkgs.runCommand "prismlauncher" {
+    #   nativeBuildInputs = [ pkgs.makeWrapper ];
+    # } ''
+    #   makeWrapper ${pkgs.prismlauncher}/bin/prismlauncher $out/bin/prismlauncher \
+    #   --set NIX_LD ${
+    #     pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"
+    #   } \
+    #   --set NIX_LD_LIBRARY_PATH ${
+    #     pkgs.lib.makeLibraryPath [ pkgs.nss pkgs.stdenv.cc.cc ]
+    #   } \
+    #   --prefix LD_LIBRARY_PATH : ${
+    #     pkgs.lib.makeLibraryPath [ pkgs.nss pkgs.stdenv.cc.cc ]
+    #   }
+    # '')
+  ];
 
   environment.systemPackages = with pkgs; [
     # Package that helps games run with priority
