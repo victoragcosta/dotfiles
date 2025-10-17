@@ -64,7 +64,7 @@
       # When connected to a charger
       AC = {
         autoSuspend.action = "nothing";
-        autoSuspend.idleTimeout = 10 * 60 * 1000; # 10 min in ms
+        # autoSuspend.idleTimeout = 10 * 60 * 1000; # 10 min in ms
         dimDisplay.enable = true;
         dimDisplay.idleTimeout = 3 * 60 * 1000; # 3 min in ms
         inhibitLidActionWhenExternalMonitorConnected = true;
