@@ -41,11 +41,14 @@
           noiseStrength = 1;
           strength = 1;
         };
-
+        fallApart.enable = true;
+        fps.enable = true;
+        minimization = {
+          animation = "magiclamp";
+          duration = 150;
+        };
         slideBack.enable = true;
-
         translucency.enable = true;
-
         wobblyWindows.enable = true;
       };
     };
@@ -54,6 +57,45 @@
     kscreenlocker = {
       autoLock = false;
       # timeout = 0;
+    };
+
+    powerdevil = {
+
+      # When connected to a charger
+      AC = {
+        autoSuspend.action = "nothing";
+        autoSuspend.idleTimeout = 10 * 60 * 1000; # 10 min in ms
+        dimDisplay.enable = true;
+        dimDisplay.idleTimeout = 3 * 60 * 1000; # 3 min in ms
+        inhibitLidActionWhenExternalMonitorConnected = true;
+        powerButtonAction = "showLogoutScreen";
+        powerProfile = "performance";
+        turnOffDisplay.idleTimeout = 5 * 60 * 1000; # 5 min in ms
+        turnOffDisplay.idleTimeoutWhenLocked = 1 * 60 * 1000; # 1 min in ms
+        whenLaptopLidClosed = "doNothing";
+        whenSleepingEnter = "hybridSleep";
+      };
+
+      # When not connected to a charger
+      battery = {
+        autoSuspend.action = "hibernate";
+        autoSuspend.idleTimeout = 5 * 60 * 1000; # 5 min in ms
+        dimDisplay.enable = true;
+        dimDisplay.idleTimeout = 1 * 60 * 1000; # 1 min in ms
+        inhibitLidActionWhenExternalMonitorConnected = true;
+        powerButtonAction = "showLogoutScreen";
+        powerProfile = "powerSaving";
+        turnOffDisplay.idleTimeout = 3 * 60 * 1000; # 3 min in ms
+        turnOffDisplay.idleTimeoutWhenLocked = 1 * 60 * 1000; # 1 min in ms
+        whenLaptopLidClosed = "sleep";
+        whenSleepingEnter = "hybridSleep";
+      };
+
+      batteryLevels = {
+        criticalAction = "hibernate";
+        criticalLevel = 5;
+        lowLevel = 15;
+      };
     };
 
     #
