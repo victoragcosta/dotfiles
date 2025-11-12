@@ -47,8 +47,8 @@
         };
     in {
       nixosConfigurations = {
-        deskcubo = mkHostConfig { hostname = "deskcubo"; hardware-config = ./configs/deskcubo/configuration.nix;};
-        cubobook = mkHostConfig { hostname = "cubobook"; hardware-config = ./configs/cubobook/configuration.nix;};
+        deskcubo = mkHostConfig { hostname = "deskcubo"; config = ./configs/deskcubo/configuration.nix;};
+        cubobook = mkHostConfig { hostname = "cubobook"; config = ./configs/cubobook/configuration.nix;};
       };
     };
 }
