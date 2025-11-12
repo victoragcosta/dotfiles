@@ -24,25 +24,31 @@
           inherit system;
           config = { allowUnfree = true; };
         } // args);
-    in {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = inputs // {
+      mkHostConfig = {hostname, config, ...}: nixpkgs.lib.nixosSystem {
           inherit system;
-          inherit make-pkgs-unstable;
+          specialArgs = inputs // {
+            inherit system;
+            inherit make-pkgs-unstable;
+          };
+          modules = [
+            # Import the previous configuration.nix we used,
+            # so the old configuration file still takes effect
+            
+            config
+            ./home/default.nix
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.cubo = ./home/home.nix;
+              home-manager.sharedModules =[plasma-manager.homeModules.plasma-manager];
+            }
+            { networking.hostname = hostname; }
+          ];
         };
-        modules = [
-          # Import the previous configuration.nix we used,
-          # so the old configuration file still takes effect
-          ./nixos/configuration.nix
-          ./home/default.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.cubo = ./home/home.nix;
-            home-manager.sharedModules =[plasma-manager.homeModules.plasma-manager];
-          }
-        ];
+    in {
+      nixosConfigurations = {
+        deskcubo = mkHostConfig { hostname = "deskcubo"; hardware-config = ./configs/deskcubo/configuration.nix;};
+        cubobook = mkHostConfig { hostname = "cubobook"; hardware-config = ./configs/cubobook/configuration.nix;};
       };
     };
 }
