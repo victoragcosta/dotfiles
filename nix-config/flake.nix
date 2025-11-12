@@ -42,7 +42,6 @@
               home-manager.users.cubo = ./home/home.nix;
               home-manager.sharedModules =[plasma-manager.homeModules.plasma-manager];
             }
-            { networking.hostname = hostname; }
           ];
         };
     in {
