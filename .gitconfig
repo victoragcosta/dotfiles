@@ -21,3 +21,5 @@
 	tool = nvimdiff
 [mergetool]
 	prompt = true
+[pull]
+	rebase = false
