@@ -10,16 +10,6 @@ in {
     ./hardware-configuration.nix
   ];
 
-  fileSystems."/mnt/sata-ssd" = {
-    device = "/dev/disk/by-uuid/9bd6eb78-e750-4b56-820d-301472544d56";
-    fsType = "ext4";
-  };
-
-  fileSystems."/mnt/hdd" = {
-    device = "/dev/disk/by-uuid/a57743fa-e502-4f99-ba93-023a7429d734";
-    fsType = "ext4";
-  };
-
   networking.hostName = "cubobook"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
