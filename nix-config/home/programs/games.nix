@@ -23,6 +23,14 @@ in {
     '';
   };
 
+  # For game streaming to moolight
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
   # Add steam
   programs.steam = {
     enable = true;
@@ -87,7 +95,5 @@ in {
     rclone # for cloud backup with ludusavi
     # For better proton environments
     protonup-qt
-    # Game streaming
-    sunshine
   ];
 }
