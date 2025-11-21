@@ -10,16 +10,6 @@ in {
     ./hardware-configuration.nix
   ];
 
-  fileSystems."/mnt/sata-ssd" = {
-    device = "/dev/disk/by-uuid/9bd6eb78-e750-4b56-820d-301472544d56";
-    fsType = "ext4";
-  };
-
-  fileSystems."/mnt/hdd" = {
-    device = "/dev/disk/by-uuid/a57743fa-e502-4f99-ba93-023a7429d734";
-    fsType = "ext4";
-  };
-
   networking.hostName = "cubobook"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -36,6 +26,9 @@ in {
   # configure Nvidia GPU
   hardware.graphics.enable = true;
 
+  # WHY THE FUCK DO I NEED TO ADD VIDEO DRIVERS TO XSERVER IF I'M USING WAYLAND?!
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
@@ -48,7 +41,7 @@ in {
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = true;
+    powerManagement.finegrained = false;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
