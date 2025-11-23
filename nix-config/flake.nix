@@ -25,12 +25,14 @@
           inherit system;
           config = { allowUnfree = true; };
         } // args);
+      unstable-pkgs = make-pkgs-unstable { config = { allowUnfree = true; }; };
       mkHostConfig = { hostname, config, ... }:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
             inherit system;
             inherit make-pkgs-unstable;
+            inherit unstable-pkgs;
           };
           modules = [
             # Import the previous configuration.nix we used,
