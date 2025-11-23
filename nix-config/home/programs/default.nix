@@ -5,5 +5,6 @@
     ./games.nix
     ./sunshine.nix
     ./steam.nix
+    ./tailscale.nix
   ];
 }
