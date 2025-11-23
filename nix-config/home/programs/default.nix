@@ -1,3 +1,9 @@
 { ... }: {
-  imports = [ ./general.nix ./neovim.nix ./games.nix ./sunshine.nix ];
+  imports = [
+    ./general.nix
+    ./neovim.nix
+    ./games.nix
+    ./sunshine.nix
+    ./steam.nix
+  ];
 }

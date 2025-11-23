@@ -1,4 +1,4 @@
-{ pkgs, make-pkgs-unstable, ... }:
+{ pkgs, lib, make-pkgs-unstable, ... }:
 let
   unstable-pkgs = make-pkgs-unstable {
     config = {
@@ -11,7 +11,7 @@ let
   };
 in {
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = lib.mkOverride true;
 
   # Add flatpak
   services.flatpak.enable = true;
@@ -21,24 +21,6 @@ in {
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
-  };
-
-  # Add steam
-  programs.steam = {
-    enable = true;
-    # Open ports in the firewall for Steam Remote Play
-    remotePlay.openFirewall = true;
-    # Open ports in the firewall for Source Dedicated Server
-    dedicatedServer.openFirewall = true;
-    # Open ports in the firewall for Steam Local Network Game Transfers
-    localNetworkGameTransfers.openFirewall = true;
-    # Enables protontricks for better tinkering with game environments
-    protontricks.enable = true;
-    extraCompatPackages = with pkgs;
-      [
-        # For better proton environments
-        proton-ge-bin
-      ];
   };
 
   users.users.cubo.packages = [
