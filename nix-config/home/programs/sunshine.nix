@@ -1,14 +1,16 @@
-{ pkgs, make-pkgs-unstable, ... }:
+{ config, pkgs, make-pkgs-unstable, ... }:
 let
   # An easier way to call the service below
   steam-run-url = pkgs.writeShellApplication {
     name = "steam-run-url";
     text = ''
-      echo "$1" > "/run/user/$(id --user)/steam-run-url.fifo"
+      echo "$1" > "/run/user/${
+        builtins.toString config.users.users.cubo.uid
+      }/steam-run-url.fifo"
     '';
-    runtimeInputs = [
-      pkgs.coreutils # For `id` command
-    ];
+    # runtimeInputs = [
+    #   pkgs.coreutils # For `id` command
+    # ];
   };
 in {
 
@@ -17,10 +19,10 @@ in {
   systemd.user.services.steam-run-url-service = {
     enable = true;
     description = "Listen and starts steam games by id";
-    wantedBy = [ "graphical-session.target" ];
-    partOf = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
+    wantedBy = [ "default.target" ];
+    partOf = [ "default.target" ];
+    wants = [ "default.target" ];
+    after = [ "default.target" ];
     serviceConfig.Restart = "on-failure";
     script = toString (pkgs.writers.writePython3 "steam-run-url-service" { } ''
       import os
@@ -67,10 +69,9 @@ in {
         {
           name = "Steam Big Picture";
           prep-cmd = [{
-            do = "";
+            do = "steam-run-url steam://open/bigpicture";
             undo = "steam-run-url steam://close/bigpicture";
           }];
-          detached = "steam-run-url steam://open/bigpicture";
           image-path = "steam.png";
         }
         {

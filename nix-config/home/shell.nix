@@ -16,6 +16,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cubo = {
+    uid = 1000;
     isNormalUser = true;
     description = "Victor";
     extraGroups = [ "networkmanager" "wheel" ];
