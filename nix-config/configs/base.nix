@@ -84,7 +84,9 @@ in {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = lib.mkDefault true;
+
+  programs.steam.enable = lib.mkDefault true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
