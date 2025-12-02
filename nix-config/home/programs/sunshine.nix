@@ -14,7 +14,7 @@
       # ];
     };
   in {
-    programs.steam.enable = lib.mkOverride true;
+    programs.steam.enable = lib.mkForce true;
 
     # For game streaming to moolight
     services.sunshine = {
