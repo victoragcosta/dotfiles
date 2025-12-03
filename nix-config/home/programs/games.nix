@@ -59,6 +59,8 @@ in {
           "--prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath extraLibs}"
         ];
       }))
+    # For accessing sunshine
+    pkgs.moonlight-qt
   ];
 
   environment.systemPackages = with pkgs; [
