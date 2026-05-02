@@ -8,9 +8,13 @@
     enableBashCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+    interactiveShellInit = ''
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+    '';
   };
   programs.zsh.ohMyZsh = { enable = true; };
   environment.shells = [ pkgs.zsh ];
+  environment.variables = { ZVM_SYSTEM_CLIPBOARD_ENABLED = "true"; };
 
   users.defaultUserShell = pkgs.zsh;
 
