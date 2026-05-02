@@ -1,4 +1,4 @@
-{ config, pkgs, unstable-pkgs, ... }: {
+{ config, pkgs, ... }: {
   services.tailscale.enable = true;
-  services.tailscale.package = unstable-pkgs.tailscale;
+  services.tailscale.package = pkgs.tailscale;
 }

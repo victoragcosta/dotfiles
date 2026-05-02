@@ -1,10 +1,11 @@
 { ... }: {
   imports = [
-    ./general.nix
-    ./neovim.nix
     ./games.nix
-    ./sunshine.nix
+    ./general.nix
+    ./mongodb.nix
+    ./neovim.nix
     ./steam.nix
+    ./sunshine.nix
     ./tailscale.nix
   ];
 }

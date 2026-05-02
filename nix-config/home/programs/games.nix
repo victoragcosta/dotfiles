@@ -1,15 +1,4 @@
-{ pkgs, lib, make-pkgs-unstable, ... }:
-let
-  unstable-pkgs = make-pkgs-unstable {
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        # Needed for vintagestory
-        "dotnet-runtime-7.0.20"
-      ];
-    };
-  };
-in {
+{ pkgs, lib, ... }: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkOverride true;
 
@@ -24,7 +13,7 @@ in {
   };
 
   users.users.cubo.packages = [
-    unstable-pkgs.vintagestory
+    pkgs.vintagestory
     # Minecraft
     (pkgs.prismlauncher.overrideAttrs (oldAttrs:
       let
@@ -46,12 +35,12 @@ in {
           cups
           udev
           systemd
-          xorg.libX11
-          xorg.libXcomposite
-          xorg.libXdamage
-          xorg.libXext
-          xorg.libXfixes
-          xorg.libXrandr
+          libX11
+          libXcomposite
+          libXdamage
+          libXext
+          libXfixes
+          libXrandr
         ];
       in {
         buildInputs = (oldAttrs.buildInputs or [ ]) ++ extraLibs;

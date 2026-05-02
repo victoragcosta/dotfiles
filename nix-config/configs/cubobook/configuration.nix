@@ -2,9 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, make-pkgs-unstable, ... }:
-let unstable-pkgs = make-pkgs-unstable { config = { allowUnfree = true; }; };
-in {
+{ config, pkgs, lib, ... }: {
   imports = [ # Include the results of the hardware scan.
     ../base.nix
     ./hardware-configuration.nix

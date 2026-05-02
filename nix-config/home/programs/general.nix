@@ -1,6 +1,4 @@
-{ pkgs, make-pkgs-unstable, ... }:
-let unstable-pkgs = make-pkgs-unstable { config = { allowUnfree = true; }; };
-in {
+{ pkgs, ... }: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -21,10 +19,12 @@ in {
     orca-slicer
     zapzap
     discord
-    unstable-pkgs.freecad
-    stremio
+    freecad
+    # removed, dunno what to do,
+    # but I ain't using it, so I ain't dealing with that now
+    # stremio 
     android-tools
-    mongodb
+    mongodb-ce
     mongodb-compass
     easyeffects
     libreoffice-qt6-fresh

@@ -2,9 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, make-pkgs-unstable, ... }:
-let unstable-pkgs = make-pkgs-unstable { config = { allowUnfree = true; }; };
-in {
+{ config, pkgs, lib, ... }: {
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -87,8 +85,6 @@ in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 
-  programs.steam.enable = lib.mkDefault true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -104,7 +100,7 @@ in {
     ghostty
     brave
     vlc
-    torrential
+    # torrential # removed
     gparted
     kdePackages.kalk
     gamemode
@@ -114,25 +110,40 @@ in {
   # setup virtualisation
   virtualisation.spiceUSBRedirection.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # List programs you want to enable
+  programs = {
+    steam.enable = lib.mkDefault true;
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # mtr.enable = true;
+    # gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+  };
 
   # List services that you want to enable:
+  services = {
+    # Auto mount drives
+    udisks2.enable = true;
 
-  # Auto mount drives
-  services.udisks2.enable = true;
+    # Configure and install udev related packages
+    udev.packages = with pkgs; [ vial via ];
 
-  # Configure and install udev related packages
-  services.udev.packages = with pkgs; [ vial via ];
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+    # Enable fwupd to update BIOS and other firmwares
+    fwupd.enable = true;
 
-  # Enable fwupd to update BIOS and other firmwares
-  services.fwupd.enable = true;
+    # Enable MongoDB server
+    mongodb.enable = true;
+  };
+
+  # Auto upgrading
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+  };
 }

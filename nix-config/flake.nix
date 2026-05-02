@@ -2,12 +2,12 @@
   description = "A simple NixOS flake";
 
   inputs = {
-    # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     # NixOS official unstable package source
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # NixOS official package source, using the nixos-25.05 branch here
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
@@ -16,23 +16,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, plasma-manager, ...
-    }@inputs:
+  outputs =
+    { self, nixpkgs, nixpkgs-stable, home-manager, plasma-manager, ... }@inputs:
     let
       system = "x86_64-linux";
-      make-pkgs-unstable = args:
-        import nixpkgs-unstable ({
-          inherit system;
-          config = { allowUnfree = true; };
-        } // args);
-      unstable-pkgs = make-pkgs-unstable { config = { allowUnfree = true; }; };
+      stable-pkgs = import nixpkgs-stable ({
+        inherit system;
+        config = { allowUnfree = true; };
+      });
       mkHostConfig = { hostname, config, ... }:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
             inherit system;
-            inherit make-pkgs-unstable;
-            inherit unstable-pkgs;
+            inherit stable-pkgs;
           };
           modules = [
             # Import the previous configuration.nix we used,
