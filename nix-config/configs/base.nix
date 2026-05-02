@@ -25,7 +25,8 @@ in {
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
-      # LANGUAGE = ""; # fix ç in us-intl
+      LANGUAGE = ""; # fix ç in us-intl
+      LANG = "pt_BR.UTF-8"; # fix ç in us-intl
       LC_ADDRESS = "pt_BR.UTF-8";
       LC_COLLATE = "en_US.UTF-8";
       LC_CTYPE = "pt_BR.UTF-8"; # fix ç in us-intl
