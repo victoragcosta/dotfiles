@@ -38,13 +38,18 @@
       LC_TELEPHONE = "pt_BR.UTF-8";
       LC_TIME = "pt_BR.UTF-8";
     };
+    inputMethod = {
+      type = "fcitx5";
+      enable = true;
+      fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
+    };
   };
 
   # Cedilla fix
-  environment.variables = {
-    GTK_IM_MODULE = "cedilla";
-    QT_IM_MODULE = "cedilla";
-  };
+  # environment.variables = {
+  #   GTK_IM_MODULE = "cedilla";
+  #   QT_IM_MODULE = "cedilla";
+  # };
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
