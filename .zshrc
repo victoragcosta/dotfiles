@@ -72,7 +72,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ubuntu git gpg-agent asdf rust bun python pip)
+plugins=(git gpg-agent asdf rust bun python pip)
 
 source $ZSH/oh-my-zsh.sh
 
