@@ -45,11 +45,14 @@
     };
   };
 
-  # Cedilla fix
-  # environment.variables = {
-  #   GTK_IM_MODULE = "cedilla";
-  #   QT_IM_MODULE = "cedilla";
-  # };
+  environment.variables = {
+    # Cedilla fix
+    # GTK_IM_MODULE = "cedilla";
+    # QT_IM_MODULE = "cedilla";
+
+    # Better compatibility with fcitx5
+    XMODIFIERS = "@im=fcitx";
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
