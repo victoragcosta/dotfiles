@@ -22,6 +22,8 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services.sunshine.enable = true;
+  # Enables VR on my desktop
+  my.vr.enable = lib.mkForce true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

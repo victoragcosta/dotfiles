@@ -4,5 +4,6 @@
     ./programs/default.nix
     ./shell.nix
     ./home-manager.nix
+    ./vr.nix
   ];
 }
