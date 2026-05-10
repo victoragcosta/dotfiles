@@ -33,6 +33,8 @@
     solaar
     # For testing joysticks and wheels
     jstest-gtk
+    # For configuring gaming wheels
+    oversteer
   ];
 
   services.udev.extraRules = ''
