@@ -58,8 +58,5 @@
     # Game backup
     ludusavi
     rclone # for cloud backup with ludusavi
-    # For better proton environments
-    protonup-qt
-    protontricks
   ];
 }
