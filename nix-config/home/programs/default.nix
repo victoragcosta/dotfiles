@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ./controllers.nix
     ./games.nix
     ./general.nix
     ./mongodb.nix
