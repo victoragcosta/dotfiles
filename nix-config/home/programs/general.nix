@@ -31,6 +31,8 @@
     yt-dlp
     # For configuring logitech devices
     solaar
+    # For testing joysticks and wheels
+    jstest-gtk
   ];
 
   services.udev.extraRules = ''
