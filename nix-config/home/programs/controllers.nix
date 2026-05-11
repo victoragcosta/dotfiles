@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, ... }: {
   # For configuring gaming wheels
   services.udev.packages = with pkgs; [ oversteer ];
   hardware.new-lg4ff.enable = true;
@@ -8,6 +8,8 @@
     solaar
     # For testing joysticks and wheels
     jstest-gtk
+    # For configuring gaming wheels
+    oversteer
   ];
 
   services.udev.extraRules = ''
