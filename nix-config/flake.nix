@@ -6,6 +6,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    # Extra recent packages for XR
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -16,8 +18,8 @@
     };
   };
 
-  outputs =
-    { self, nixpkgs, nixpkgs-stable, home-manager, plasma-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-xr, home-manager
+    , plasma-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       stable-pkgs = import nixpkgs-stable ({
@@ -37,6 +39,7 @@
 
             config
             ./home/default.nix
+            nixpkgs-xr.nixosModules.nixpkgs-xr
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

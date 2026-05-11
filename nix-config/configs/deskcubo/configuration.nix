@@ -23,7 +23,10 @@
 
   services.sunshine.enable = true;
   # Enables VR on my desktop
-  my.vr.enable = lib.mkForce true;
+  my.vr = {
+    enable = lib.mkForce true;
+    programs.kaon.enable = lib.mkForce true;
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

@@ -1,8 +1,15 @@
 { config, lib, pkgs, ... }:
 let cfg = config.my.vr;
 in {
-  options.my.vr = { enable = lib.mkEnableOption "VR"; };
+  options.my.vr = {
+    enable = lib.mkEnableOption "VR";
+    programs.kaon.enable =
+      lib.mkEnableOption "Kaon, a program that runs UEVR on Linux";
+  };
   config = lib.mkIf cfg.enable {
+
+    # Adds Kaon if enabled
+    users.users.cubo.packages = lib.mkIf cfg.programs.kaon.enable [ pkgs.kaon ];
 
     # Enable monado for OpenXR
     # See more at https://wiki.nixos.org/wiki/VR#Monado
@@ -42,5 +49,6 @@ in {
     # add environment variables to the command in Steam. 
     # A command example:
     # PRESSURE_VESSEL_FILESYSTEMS_RW=$XDG_RUNTIME_DIR/monado_comp_ipc %command%
+
   };
 }
