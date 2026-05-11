@@ -1,5 +1,6 @@
 { ... }: {
   imports = [
+    ./appimage.nix
     ./controllers.nix
     ./games.nix
     ./general.nix
