@@ -12,18 +12,15 @@
       # Open ports in the firewall for Steam Local Network Game Transfers
       localNetworkGameTransfers.openFirewall = true;
       # Enables protontricks for better tinkering with game environments
-      protontricks.enable = true;
-      # extraCompatPackages = with pkgs;
-      #   [
-      #     # For better proton environments
-      #     proton-ge-bin
-      #   ];
+      protontricks.enable = true; # This breaks, but useful to find app ids
     };
-    environment.systemPackages = with pkgs;
-      [
-        # For better proton environments
-        protonup-qt
-      ];
+    environment.systemPackages = with pkgs; [
+      # For better proton environments
+      protonup-qt
+      # to substitute the broken protontricks
+      wineWow64Packages.stable
+      winetricks
+    ];
 
     # Silently auto start steam on startup
     systemd.user.services.steam = {
