@@ -26,12 +26,18 @@
         inherit system;
         config = { allowUnfree = true; };
       });
+      xr-pkgs = import nixpkgs ({
+        inherit system;
+        config = { allowUnfree = true; };
+        overlays = [ nixpkgs-xr.overlays.default ];
+      });
       mkHostConfig = { hostname, config, ... }:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
             inherit system;
             inherit stable-pkgs;
+            inherit xr-pkgs;
           };
           modules = [
             # Import the previous configuration.nix we used,
@@ -39,7 +45,6 @@
 
             config
             ./home/default.nix
-            nixpkgs-xr.nixosModules.nixpkgs-xr
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

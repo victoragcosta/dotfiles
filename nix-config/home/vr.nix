@@ -1,15 +1,20 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, xr-pkgs, ... }:
 let cfg = config.my.vr;
 in {
   options.my.vr = {
     enable = lib.mkEnableOption "VR";
-    programs.kaon.enable =
-      lib.mkEnableOption "Kaon, a program that runs UEVR on Linux";
+    programs = {
+      kaon.enable = lib.mkEnableOption "Run UEVR on Linux";
+      wayvr.enable = lib.mkEnableOption "Access your wayland desktop from VR";
+    };
   };
   config = lib.mkIf cfg.enable {
 
     # Adds Kaon if enabled
-    users.users.cubo.packages = lib.mkIf cfg.programs.kaon.enable [ pkgs.kaon ];
+    environment.systemPackages = [
+      (lib.mkIf cfg.programs.kaon.enable xr-pkgs.kaon)
+      (lib.mkIf cfg.programs.wayvr.enable pkgs.wayvr)
+    ];
 
     # Enable monado for OpenXR
     # See more at https://wiki.nixos.org/wiki/VR#Monado

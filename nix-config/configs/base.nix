@@ -135,7 +135,10 @@
   # Enables my VR configuration at ../home/vr.nix if this is set to true
   my.vr = {
     enable = lib.mkDefault false;
-    programs.kaon.enable = lib.mkDefault false;
+    programs = {
+      kaon.enable = lib.mkDefault false;
+      wayvr.enable = lib.mkDefault true;
+    };
   };
 
   # List services that you want to enable:
