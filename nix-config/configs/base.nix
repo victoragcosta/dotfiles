@@ -86,6 +86,8 @@
     powerOnBoot = lib.mkDefault true;
     settings.General.Experimental = lib.mkDefault true;
   };
+  # Enable advanced features for Xbox and similar controllers
+  hardware.xpadneo.enable = true;
 
   # Experimental
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
