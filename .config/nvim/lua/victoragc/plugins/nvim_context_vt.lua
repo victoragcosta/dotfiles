@@ -1,11 +1,8 @@
----@type (string | LazyPluginSpec)[]
-local plugins = {
-	{
-		'andersevenrud/nvim_context_vt',
-		opts = {
-			prefix = '',
-		},
-	},
-}
+require 'url'
 
-return plugins
+vim.pack.add {
+	github 'andersevenrud/nvim_context_vt',
+}
+require('nvim_context_vt').setup {
+	prefix = '',
+}

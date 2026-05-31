@@ -1,18 +1,15 @@
----@type (string | LazyPluginSpec)[]
-local plugins = {
+require 'url'
+
+vim.pack.add {
 	-- Shows a colored column when you get close to it or past it
-	{
-		'Bekaboo/deadcolumn.nvim',
-		opts = {
-			scope = 'visible',
-			modes = function(mode)
-				return mode:find '^[nictRss\x13]' ~= nil
-			end,
-			extra = {
-				follow_tw = '+1',
-			},
-		},
+	github 'Bekaboo/deadcolumn.nvim',
+}
+require('deadcolumn').setup {
+	scope = 'visible',
+	modes = function(mode)
+		return mode:find '^[nictRss\x13]' ~= nil
+	end,
+	extra = {
+		follow_tw = '+1',
 	},
 }
-
-return plugins

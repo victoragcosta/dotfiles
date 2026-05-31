@@ -1,18 +1,9 @@
----@type (string | LazyPluginSpec)[]
-local plugins = {
-	{
-		'ysmb-wtsg/in-and-out.nvim',
-		keys = {
-			{
-				'<M-i>',
-				function()
-					require('in-and-out').in_and_out()
-				end,
-				mode = 'i',
-				desc = 'Move out of punctuation pairs with [i]n and out',
-			},
-		},
-	},
+require 'url'
+
+vim.pack.add {
+	github 'ysmb-wtsg/in-and-out.nvim',
 }
 
-return plugins
+vim.keymap.set({ 'i' }, '<M-i>', function()
+	require('in-and-out').in_and_out()
+end, { desc = 'Move out of punctuation pairs with [i]n and out' })

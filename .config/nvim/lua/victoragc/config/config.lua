@@ -1,3 +1,6 @@
+-- Enable faster startup by caching compiled Lua modules
+vim.loader.enable()
+
 -- See `:help mapleader`
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -23,13 +26,16 @@ vim.opt.showmode = true
 vim.o.showtabline = 2
 
 -- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+vim.schedule(function()
+	vim.opt.clipboard = 'unnamedplus'
+end)
 
 -- Enable break indent
 vim.opt.breakindent = true
 
--- Save undo history
+-- Save undo history between sessions
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -56,9 +62,14 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars =
 	{ tab = '| ', trail = '·', nbsp = '␣', leadmultispace = '>-' }
+-- Set indentations to tabs with size 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+
+-- Adds \n to the end of the file
+vim.opt.fileformat = 'unix'
+vim.opt.fixendofline = true
 
 -- Let me know when I'm reaching the limit column
 vim.opt_global.colorcolumn = { 81, '+1' }
@@ -72,12 +83,18 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 15
 
+-- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
+-- instead raise a dialog asking if you wish to save the current file(s)
+-- See `:help 'confirm'`
+vim.opt.confirm = true
+
 -- Better colors for terminal
 vim.opt.termguicolors = true
 
 -- Set what will be saved in sessions
 vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
 
+-- Syntax coloring for .env files
 vim.filetype.add {
 	pattern = {
 		['.*.env.*.local'] = 'sh',

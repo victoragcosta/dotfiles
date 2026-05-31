@@ -1,24 +1,23 @@
----@type (string | LazyPluginSpec)[]
-local plugins = {
-	{
-		'olrtg/nvim-emmet',
-		keys = function()
-			return {
-				{
-					'<leader>xe',
-					require('nvim-emmet').wrap_with_abbreviation,
-					mode = 'n',
-					desc = 'Wrap with [e]mmet abbreviation',
-				},
-				{
-					'<leader>xe',
-					require('nvim-emmet').wrap_with_abbreviation,
-					mode = 'v',
-					desc = 'Wrap with [e]mmet abbreviation',
-				},
-			}
-		end,
-	},
+require 'url'
+
+vim.pack.add {
+	github 'olrtg/nvim-emmet',
 }
 
-return plugins
+vim.keymap.set(
+	'n',
+	'<leader>xe',
+	require('nvim-emmet').wrap_with_abbreviation,
+	{
+		desc = 'Wrap with [e]mmet abbreviation',
+	}
+)
+
+vim.keymap.set(
+	'v',
+	'<leader>xe',
+	require('nvim-emmet').wrap_with_abbreviation,
+	{
+		desc = 'Wrap with [e]mmet abbreviation',
+	}
+)

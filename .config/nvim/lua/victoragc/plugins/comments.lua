@@ -1,7 +1,7 @@
----@type (string | LazyPluginSpec)[]
-local plugins = {
-	-- -- "gc" to comment visual regions/lines
-	{ 'numToStr/Comment.nvim', event = 'VeryLazy', opts = {} },
-}
+require 'url'
 
-return plugins
+vim.pack.add(
+	-- "gc" to comment visual regions/lines
+	{ github 'numToStr/Comment.nvim' }
+)
+require('Comment').setup()

@@ -1,12 +1,8 @@
----@type (string | LazyPluginSpec)[]
-local plugins = {
+require 'url'
+
+vim.pack.add {
 	-- Highlight todo, notes, etc in comments
-	{
-		'folke/todo-comments.nvim',
-		event = 'VimEnter',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		opts = { signs = false },
-	},
+	github 'folke/todo-comments.nvim',
 }
 
-return plugins
+require('todo-comments').setup { signs = false }

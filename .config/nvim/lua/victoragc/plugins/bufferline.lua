@@ -1,12 +1,6 @@
----@type (string | LazyPluginSpec)[]
-local plugins = {
-	{
-		'akinsho/bufferline.nvim',
-		version = '*',
-		config = function()
-			require('bufferline').setup()
-		end,
-	},
-}
+require 'url'
 
-return plugins
+vim.pack.add {
+	github 'akinsho/bufferline.nvim',
+}
+require('bufferline').setup()

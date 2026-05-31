@@ -1,19 +1,12 @@
----@type ( string | LazyPluginSpec )[]
-local plugins = {
-	{
-		'akinsho/git-conflict.nvim',
-		cond = not vim.g.started_by_firenvim,
-		lazy = false,
-		opts = {},
-		config = true,
-		keys = {
-			{
-				'<leader>HQ',
-				'<cmd>GitConflictListQf<cr>',
-				desc = 'git set [Q]uickfix list for repo',
-			},
-		},
-	},
+require 'url'
+
+vim.pack.add {
+	github 'akinsho/git-conflict.nvim',
 }
 
-return plugins
+if not vim.g.started_by_firenvim then
+	require('git-conflict').setup {}
+	vim.keymap.set('n', '<leader>HQ', '<cmd>GitConflictListQf<cr>', {
+		desc = 'git set [Q]uickfix list for repo',
+	})
+end

@@ -44,17 +44,3 @@ if vim.g.victoragc.notify_cwd_change then
 		end,
 	})
 end
-
--- Change CWD when initializing with a directory argument
-if vim.g.victoragc.autocwd_on_startup then
-	vim.api.nvim_create_autocmd('VimEnter', {
-		desc = 'Change CWD to the directory passed as argument',
-		group = cwd_group,
-		callback = function()
-			local dir = require('oil').get_current_dir()
-			if dir then
-				vim.api.nvim_set_current_dir(dir)
-			end
-		end,
-	})
-end
