@@ -22,15 +22,18 @@
     freecad
     # removed, dunno what to do,
     # but I ain't using it, so I ain't dealing with that now
-    # stremio 
+    # stremio
     android-tools
     mongodb-ce
     mongodb-compass
     easyeffects
     libreoffice-qt6-fresh
     yt-dlp
+    wl-clicker
   ];
 
   # Fix libreoffice using x11 instead of wayland
-  environment.variables = { QT_QPA_PLATFORM = "wayland"; };
+  environment.variables = {
+    QT_QPA_PLATFORM = "wayland";
+  };
 }
