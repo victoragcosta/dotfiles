@@ -29,7 +29,7 @@
     easyeffects
     libreoffice-qt6-fresh
     yt-dlp
-    wl-clicker
+    theclicker
   ];
 
   # Fix libreoffice using x11 instead of wayland
