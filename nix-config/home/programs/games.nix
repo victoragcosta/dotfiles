@@ -3,19 +3,25 @@
   nixpkgs.config.allowUnfree = lib.mkOverride true;
 
   # Add flatpak
-  services.flatpak.enable = true;
-  systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
+  services.flatpak = {
+    enable = true;
+    packages = [
+
+    ];
   };
+  # systemd.services.flatpak-repo = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   path = [ pkgs.flatpak ];
+  #   script = ''
+  #     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  #   '';
+  # };
 
   users.users.cubo.packages = [
     pkgs.vintagestory
     # Minecraft
-    (pkgs.prismlauncher.overrideAttrs (oldAttrs:
+    (pkgs.prismlauncher.overrideAttrs (
+      oldAttrs:
       let
         extraLibs = with pkgs; [
           glib
@@ -42,12 +48,14 @@
           libXfixes
           libXrandr
         ];
-      in {
+      in
+      {
         buildInputs = (oldAttrs.buildInputs or [ ]) ++ extraLibs;
         qtWrapperArgs = (oldAttrs.qtWrapperArgs or [ ]) ++ [
           "--prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath extraLibs}"
         ];
-      }))
+      }
+    ))
     # For accessing sunshine
     pkgs.moonlight-qt
   ];

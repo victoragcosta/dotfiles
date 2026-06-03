@@ -16,22 +16,37 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-xr, home-manager
-    , plasma-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      nixpkgs-xr,
+      home-manager,
+      plasma-manager,
+      nix-flatpak,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       stable-pkgs = import nixpkgs-stable ({
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       });
       xr-pkgs = import nixpkgs ({
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
         overlays = [ nixpkgs-xr.overlays.default ];
       });
-      mkHostConfig = { hostname, config, ... }:
+      mkHostConfig =
+        { hostname, config, ... }:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
@@ -40,8 +55,7 @@
             inherit xr-pkgs;
           };
           modules = [
-            # Import the previous configuration.nix we used,
-            # so the old configuration file still takes effect
+            nix-flatpak.nixosModules.nix-flatpak
 
             config
             ./home/default.nix
@@ -50,12 +64,12 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.cubo = ./home/home.nix;
-              home-manager.sharedModules =
-                [ plasma-manager.homeModules.plasma-manager ];
+              home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
             }
           ];
         };
-    in {
+    in
+    {
       nixosConfigurations = {
         deskcubo = mkHostConfig {
           hostname = "deskcubo";
