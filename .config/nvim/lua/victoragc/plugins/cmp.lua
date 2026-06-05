@@ -11,9 +11,9 @@ require('blink.cmp').setup({
 keymap= {
 		preset = 'default',
 				-- Select the next item with j as in going down
-				['<C-j>'] = {'select_prev', 'fallback'},
+				['<C-j>'] = {'select_next', 'fallback'},
 				-- Select the previous item with k as in going up
-				['<C-k>'] = {'select_next', 'fallback'},
+				['<C-k>'] = {'select_prev', 'fallback'},
 
 				-- Scroll the documentation window [b]ack / [f]orward
 				['<C-b>'] = {'scroll_documentation_up', 'fallback'},
