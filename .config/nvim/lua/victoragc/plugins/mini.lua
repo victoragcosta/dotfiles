@@ -3,11 +3,6 @@ vim.pack.add {
 }
 -- Better Around/Inside textobjects
 require('mini.ai').setup {
-	mappings = {
-		-- NOTE: Avoid conflicts with the built-in incremental selection mappings on Neovim>=0.12 (see `:help treesitter-incremental-selection`)
-		around_next = 'aa',
-		inside_next = 'in',
-	},
 	n_lines = 500,
 }
 
