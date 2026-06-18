@@ -58,6 +58,7 @@
     ))
     # For accessing sunshine
     pkgs.moonlight-qt
+    pkgs.ckan
   ];
 
   environment.systemPackages = with pkgs; [
