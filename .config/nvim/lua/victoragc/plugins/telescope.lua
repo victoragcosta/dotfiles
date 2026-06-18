@@ -75,6 +75,12 @@ map(
 )
 map(
 	'n',
+	'<leader>sH',
+	builtin.git_status,
+	{ desc = '[S]earch git modified [H]unks' }
+)
+map(
+	'n',
 	'<leader>sw',
 	builtin.grep_string,
 	{ desc = '[S]earch current [W]ord' }
