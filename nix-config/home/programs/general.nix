@@ -30,6 +30,7 @@
     libreoffice-qt6-fresh
     yt-dlp
     theclicker
+    lua-language-server
   ];
 
   # Fix libreoffice using x11 instead of wayland
