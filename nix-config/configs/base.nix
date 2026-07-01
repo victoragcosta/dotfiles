@@ -2,7 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -41,7 +47,10 @@
     inputMethod = {
       type = "fcitx5";
       enable = true;
-      fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
+      fcitx5.addons = with pkgs; [
+        fcitx5-mozc
+        fcitx5-gtk
+      ];
     };
   };
 
@@ -90,7 +99,10 @@
   hardware.xpadneo.enable = true;
 
   # Experimental
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkDefault true;
@@ -149,7 +161,10 @@
     udisks2.enable = true;
 
     # Configure and install udev related packages
-    udev.packages = with pkgs; [ vial via ];
+    udev.packages = with pkgs; [
+      vial
+      via
+    ];
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
@@ -159,6 +174,12 @@
 
     # Enable MongoDB server
     mongodb.enable = true;
+
+    # Disable sunshine by default
+    sunshine = {
+      enable = lib.mkDefault false;
+      switch-screen = lib.mkDefault false;
+    };
   };
 
   # Auto upgrading

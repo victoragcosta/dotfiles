@@ -2,8 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }: {
-  imports = [ # Include the results of the hardware scan.
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
     ../base.nix
     ./hardware-configuration.nix
   ];
@@ -21,7 +28,10 @@
   networking.hostName = "deskcubo"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  services.sunshine.enable = true;
+  services.sunshine = {
+    enable = lib.mkForce true;
+    switch-screen = lib.mkForce true;
+  };
   # Enables VR on my desktop
   my.vr = {
     enable = lib.mkForce true;

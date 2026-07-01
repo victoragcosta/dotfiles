@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   # Install fonts
-  fonts.packages = with pkgs; [ nerd-fonts.fira-code fira-code ];
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    fira-code
+  ];
 
   # Enable ZSH shell
   programs.zsh = {
@@ -13,9 +16,13 @@
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
   };
-  programs.zsh.ohMyZsh = { enable = true; };
+  programs.zsh.ohMyZsh = {
+    enable = true;
+  };
   environment.shells = [ pkgs.zsh ];
-  environment.variables = { ZVM_SYSTEM_CLIPBOARD_ENABLED = "true"; };
+  environment.variables = {
+    ZVM_SYSTEM_CLIPBOARD_ENABLED = "true";
+  };
 
   users.defaultUserShell = pkgs.zsh;
 
@@ -24,7 +31,12 @@
     uid = 1000;
     isNormalUser = true;
     description = "Victor";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      # uinput is needed for sunshine
+      "uinput"
+    ];
     shell = pkgs.zsh;
   };
 }
