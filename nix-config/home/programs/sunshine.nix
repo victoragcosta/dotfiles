@@ -8,6 +8,7 @@ let
   cfg = config.services.sunshine;
 in
 {
+  options.services.sunshine.switch-screen = lib.mkEnableOption "Switch screen when running a sunshine app";
   config = lib.mkIf config.services.sunshine.enable (
     let
       # An easier way to call the service below
@@ -24,10 +25,6 @@ in
     {
       programs.steam.enable = lib.mkForce true;
 
-      options.services.sunshine.switch-screen = {
-        enable = lib.mkEnableOption "Switch screen when running a sunshine app";
-      };
-
       # For game streaming to moolight
       services.sunshine = {
         autoStart = true;
@@ -35,12 +32,14 @@ in
         openFirewall = true;
         settings = {
           back_button_timeout = 2000;
-          global_prep_cmd = lib.mkIf cfg.switch-screen [
-            {
-              do = "kscreen-doctor output.HDMI-A-1.enable output.DP-3.disable";
-              undo = "kscreen-doctor output.DP-3.enable output.HDMI-A-1.disable";
-            }
-          ];
+          global_prep_cmd = lib.mkIf cfg.switch-screen (
+            builtins.toJSON [
+              {
+                do = "kscreen-doctor output.HDMI-A-1.enable output.DP-3.disable";
+                undo = "kscreen-doctor output.DP-3.enable output.HDMI-A-1.disable";
+              }
+            ]
+          );
         };
         applications = {
           env = {
