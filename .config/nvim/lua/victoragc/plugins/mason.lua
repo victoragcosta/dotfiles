@@ -17,6 +17,7 @@ vim.pack.add {
 --  - settings (table): Override the default settings passed when initializing the server.
 --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 local schemastore = require 'schemastore'
+---@type { [string]: vim.lsp.Config }
 local lsp_configs = {
 	-- See `:help lspconfig-all` for a list of all the pre-configured LSPs
 	--
@@ -142,6 +143,7 @@ local linters = {
 
 -- Can be opened with :Mason
 require('mason').setup()
+require('mason-lspconfig').setup()
 
 -- Make sure everything configured above is installed
 local ensure_installed = vim.tbl_keys(lsp_configs or {})
