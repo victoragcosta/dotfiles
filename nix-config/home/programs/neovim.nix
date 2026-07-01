@@ -1,13 +1,14 @@
 { pkgs, ... }: {
   # Install fonts
-  fonts.packages = with pkgs; [ nerd-fonts.fira-code fira-code ];
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    fira-code
+  ];
 
-  users.users.cubo.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     neovim
     # some gui for neovim
     neovide
-  ];
-  environment.systemPackages = with pkgs; [
     # Neovim dependencies
     git
     delta
