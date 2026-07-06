@@ -23,12 +23,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- TODO: actually implement this autocommand without much duplication
 
 -- Notify of a CWD change
-local cwd_group = vim.api.nvim_create_augroup('victoragc-cwd', { clear = true })
+CwdGroup = vim.api.nvim_create_augroup('victoragc-cwd', { clear = true })
 if vim.g.victoragc.notify_cwd_change then
 	vim.api.nvim_create_autocmd('DirChanged', {
 		-- pattern = 'global',
 		desc = 'Notify of a cwd change',
-		group = cwd_group,
+		group = CwdGroup,
 		callback = function()
 			local function format_cwd()
 				return string.format(

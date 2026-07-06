@@ -37,7 +37,7 @@ require('oil').setup {
 	},
 }
 
-require('oil-git-status').setup()
+require('oil-git-status').setup {}
 
 -- remaps
 vim.keymap.set(
@@ -57,7 +57,7 @@ vim.keymap.set(
 if vim.g.victoragc.autocwd_on_startup then
 	vim.api.nvim_create_autocmd('VimEnter', {
 		desc = 'Change CWD to the directory passed as argument',
-		group = cwd_group,
+		group = CwdGroup,
 		callback = function()
 			local dir = require('oil').get_current_dir()
 			if dir then
