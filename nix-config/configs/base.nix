@@ -134,6 +134,8 @@
 
   # List programs you want to enable
   programs = {
+    # Improves dynamically linked libraries
+    nix-ld.enable = true;
     steam.enable = lib.mkDefault true;
     # Adds better support for running AppImages
     appimage.enable = lib.mkDefault true;
