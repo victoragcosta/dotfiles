@@ -44,7 +44,7 @@ end
 local session_file_name = '.session.vim'
 require('mini.sessions').setup {
 	autoread = true,
-	autowrite = false,
+	autowrite = true,
 	file = session_file_name,
 }
 vim.keymap.set('n', '<leader>S', function()
