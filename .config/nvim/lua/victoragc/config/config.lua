@@ -92,7 +92,18 @@ vim.opt.confirm = true
 vim.opt.termguicolors = true
 
 -- Set what will be saved in sessions
-vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
+vim.opt.sessionoptions = table.concat({
+	'blank', -- empty windows
+	'buffers', -- all buffers, including hidden or unloaded
+	'curdir', -- the current directory (also saves session in curdir)
+	'folds', -- manual folds and fold states
+	'globals',
+	'help', -- opened help pages
+	'localoptions', -- buffer options
+	'tabpages', -- all tabs
+	'terminal', -- all open terminals
+	'winsize', -- the window configuration for each tab, including size
+}, ',')
 
 -- Syntax coloring for .env files
 vim.filetype.add {
@@ -100,3 +111,11 @@ vim.filetype.add {
 		['.*.env.*.local'] = 'sh',
 	},
 }
+
+-- Custom configurations
+if not vim.g.victoragc then
+	vim.g.victoragc = {
+		autocwd_on_startup = true,
+		notify_cwd_change = false,
+	}
+end
