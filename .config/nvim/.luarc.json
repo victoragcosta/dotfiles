@@ -1,6 +1,9 @@
 {
     "diagnostics.globals": [
         "CwdGroup",
-        "github"
+        "github",
+        "vim",
+        "MiniNotify",
+        "MiniSessions"
     ]
 }

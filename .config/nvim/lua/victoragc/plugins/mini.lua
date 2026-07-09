@@ -1,8 +1,21 @@
 vim.pack.add {
-	github 'echasnovski/mini.nvim',
+	github 'nvim-mini/mini.nvim',
 }
 -- Better Around/Inside textobjects
 require('mini.ai').setup {
+	custom_textobjects = {
+		-- Tweak argument to also be recognized inside balanced <>
+		a = require('mini.ai').gen_spec.argument {
+			brackets = { '%b()', '%b[]', '%b{}', '%b<>' },
+			separator = '[,;]',
+			exclude_regions = { '%b""', "%b''", '%b()', '%b[]', '%b{}', '%b<>' },
+		},
+		-- Function definition (needs treesitter queries with these captures)
+		-- F = require('mini.ai').gen_spec.treesitter {
+		-- 	a = '@function',
+		-- 	i = 'body',
+		-- },
+	},
 	n_lines = 500,
 }
 
@@ -26,6 +39,20 @@ if not vim.g.vscode then
 		end,
 	})
 end
+
+-- Session management
+local session_file_name = '.session.vim'
+require('mini.sessions').setup {
+	autoread = true,
+	autowrite = false,
+	file = session_file_name,
+}
+vim.keymap.set('n', '<leader>S', function()
+	if not MiniSessions then
+		return
+	end
+	MiniSessions.write(session_file_name)
+end, { desc = 'Save [S]ession' })
 
 -- Notification system
 local notify = require 'mini.notify'
