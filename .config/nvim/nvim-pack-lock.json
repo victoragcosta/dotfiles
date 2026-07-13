@@ -58,6 +58,10 @@
       "rev": "03456b9c49365a28732378a7f2a72a613154e042",
       "src": "https://github.com/ysmb-wtsg/in-and-out.nvim"
     },
+    "lsp-overloads.nvim": {
+      "rev": "1c3c4140437e0317447a9b5cd2285b9488e8c82b",
+      "src": "https://github.com/Issafalcon/lsp-overloads.nvim"
+    },
     "mason-lspconfig.nvim": {
       "rev": "0a695750d747db1e7e70bcf0267ef8951c95fc83",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
