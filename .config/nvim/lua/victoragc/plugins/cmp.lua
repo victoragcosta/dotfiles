@@ -3,7 +3,7 @@ require 'url'
 vim.pack.add {
 	{ src = github 'saghen/blink.cmp', version = vim.version.range '1.*' },
 	{ src = github 'L3MON4D3/LuaSnip', version = vim.version.range '2.*' },
-	github 'Issafalcon/lsp-overloads.nvim',
+	-- github 'Issafalcon/lsp-overloads.nvim',
 	github 'barrettruth/blink-cmp-ghostty',
 }
 
@@ -21,10 +21,10 @@ require('blink.cmp').setup {
 		['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
 
 		-- Scroll the signature window
-		-- ['<C-p>'] = { 'scroll_signature_up', 'fallback' },
-		-- ['<C-n>'] = { 'scroll_signature_down', 'fallback' },
+		['<C-p>'] = { 'scroll_signature_up', 'fallback' },
+		['<C-n>'] = { 'scroll_signature_down', 'fallback' },
 		-- Show the signature
-		-- ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+		['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
 
 		-- ['<C-l>'] = cmp.mapping(function()
 		-- 	if luasnip.expand_or_locally_jumpable() then
@@ -66,16 +66,20 @@ require('blink.cmp').setup {
 	fuzzy = {
 		implementation = 'prefer_rust_with_warning',
 	},
-	signature = { enabled = false },
+	signature = { enabled = true },
 }
 
-require('lsp-overloads').setup {
-	display_automatically = true,
-}
+-- require('lsp-overloads').setup {
+-- 	display_automatically = true,
+-- 	keymaps = {
+-- 		next_signature = '<C-n>',
+-- 		previous_signature = '<C-p>',
+-- 	},
+-- }
 
-vim.keymap.set(
-	{ 'n', 'i' },
-	'<A-s>',
-	'<cmd>LspOverloads signature<CR>',
-	{ silent = true }
-)
+-- vim.keymap.set(
+-- 	{ 'n', 'i' },
+-- 	'<A-s>',
+-- 	'<cmd>LspOverloads signature<CR>',
+-- 	{ silent = true, desc = 'Opens [s]ignature popup' }
+-- )
