@@ -93,13 +93,10 @@ vim.opt.termguicolors = true
 
 -- Set what will be saved in sessions
 vim.opt.sessionoptions = table.concat({
-	'blank', -- empty windows
 	'buffers', -- all buffers, including hidden or unloaded
 	'curdir', -- the current directory (also saves session in curdir)
 	'folds', -- manual folds and fold states
-	'globals',
 	'help', -- opened help pages
-	'localoptions', -- buffer options
 	'tabpages', -- all tabs
 	'terminal', -- all open terminals
 	'winsize', -- the window configuration for each tab, including size
