@@ -70,6 +70,10 @@ vim.opt.shiftwidth = 2
 -- Adds \n to the end of the file
 vim.opt.fileformat = 'unix'
 vim.opt.fixendofline = true
+vim.opt.fixeol = true
+
+-- Enables editorconfig
+vim.g.editorconfig = true
 
 -- Let me know when I'm reaching the limit column
 vim.opt_global.colorcolumn = { 81, '+1' }
