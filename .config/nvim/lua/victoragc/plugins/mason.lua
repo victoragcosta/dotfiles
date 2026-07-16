@@ -34,8 +34,12 @@ local lsp_configs = {
 	css_variables = {},
 	tailwindcss = {},
 	-- TS, JS and related
-	ts_ls = {},
+	ts_ls = {
+		---@type lspconfig.settings.ts_ls
+		settings = {},
+	},
 	svelte = {
+		---@type lspconfig.settings.svelte
 		settings = {
 			svelte = {
 				['enable-ts-plugin'] = true,
@@ -47,11 +51,11 @@ local lsp_configs = {
 			},
 		},
 	},
+
 	eslint = {
+		---@type lspconfig.settings.eslint
 		settings = {
-			eslint = {
-				-- useFlatConfig = true,
-			},
+			eslint = {},
 		},
 	},
 	graphql = {},
@@ -76,18 +80,17 @@ local lsp_configs = {
 			end
 
 			client.config.settings.Lua =
+				---@diagnostic disable-next-line: param-type-mismatch
 				vim.tbl_deep_extend('force', client.config.settings.Lua, {
-					runtime = {
-						version = 'LuaJIT',
-						path = { 'lua/?.lua', 'lua/?/init.lua' },
-					},
 					workspace = {
 						checkThirdParty = false,
 						-- NOTE: this is a lot slower and will cause issues when working on your own configuration.
 						--  See https://github.com/neovim/nvim-lspconfig/issues/3189
 						library = vim.tbl_extend(
 							'force',
-							vim.api.nvim_get_runtime_file('', true),
+							vim.tbl_filter(function(d)
+								return not d:match(vim.fn.stdpath 'config' .. '/?a?f?t?e?r?')
+							end, vim.api.nvim_get_runtime_file('', true)),
 							{
 								'${3rd}/luv/library',
 								'${3rd}/busted/library',
@@ -99,6 +102,17 @@ local lsp_configs = {
 		---@type lspconfig.settings.lua_ls
 		settings = {
 			Lua = {
+				runtime = {
+					version = 'LuaJIT',
+					path = { 'lua/?.lua', 'lua/?/init.lua' },
+				},
+				diagnostics = {
+					globals = { 'vim' },
+				},
+				workspace = {
+					checkThirdParty = false,
+					library = { vim.env.VIMRUNTIME },
+				},
 				format = { enable = false }, -- Disable formatting (formatting is done by stylua)
 			},
 		},
@@ -115,6 +129,7 @@ local lsp_configs = {
 		},
 	},
 	jsonls = {
+		---@type lspconfig.settings.jsonls
 		settings = {
 			json = {
 				schemas = schemastore.json.schemas(),
