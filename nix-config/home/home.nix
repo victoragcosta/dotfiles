@@ -54,7 +54,7 @@
 
       # Tiling window manager
       scripts.polonium = {
-        enable = true;
+        # enable = true;
         settings = {
           layout.engine = "binaryTree";
         };
