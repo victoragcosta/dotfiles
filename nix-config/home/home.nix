@@ -51,6 +51,14 @@
         translucency.enable = true;
         wobblyWindows.enable = true;
       };
+
+      # Tiling window manager
+      scripts.polonium = {
+        enable = true;
+        settings = {
+          layout.engine = "binaryTree";
+        };
+      };
     };
 
     # System Settings > Screen Locking > Configure Appearance
