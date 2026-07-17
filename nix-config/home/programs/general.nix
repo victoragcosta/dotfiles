@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, stable-pkgs, ... }: {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -19,13 +19,11 @@
     orca-slicer
     zapzap
     discord
-    freecad
+    stable-pkgs.freecad
     # removed, dunno what to do,
     # but I ain't using it, so I ain't dealing with that now
     # stremio
     android-tools
-    mongodb-ce
-    mongodb-compass
     easyeffects
     libreoffice-qt6-fresh
     yt-dlp

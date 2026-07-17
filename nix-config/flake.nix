@@ -4,8 +4,8 @@
   inputs = {
     # NixOS official unstable package source
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    # NixOS official package source, using the nixos-26.05 branch here
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     # Extra recent packages for XR
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
     # Home manager
