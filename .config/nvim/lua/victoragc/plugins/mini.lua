@@ -41,18 +41,20 @@ if not vim.g.vscode then
 end
 
 -- Session management
-local session_file_name = '.session.vim'
-require('mini.sessions').setup {
-	autoread = true,
-	autowrite = true,
-	file = session_file_name,
-}
-vim.keymap.set('n', '<leader>S', function()
-	if not MiniSessions then
-		return
-	end
-	MiniSessions.write(session_file_name)
-end, { desc = 'Save [S]ession' })
+if not vim.g.started_by_firenvim then
+	local session_file_name = '.session.vim'
+	require('mini.sessions').setup {
+		autoread = true,
+		autowrite = true,
+		file = session_file_name,
+	}
+	vim.keymap.set('n', '<leader>S', function()
+		if not MiniSessions then
+			return
+		end
+		MiniSessions.write(session_file_name)
+	end, { desc = 'Save [S]ession' })
+end
 
 -- Notification system
 local notify = require 'mini.notify'
