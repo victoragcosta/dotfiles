@@ -18,7 +18,8 @@
   networking.hostName = "cubobook"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  services.sunshine.enable = lib.mkForce true;
+  # disabled because it's not that useful
+  services.sunshine.enable = lib.mkForce false;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
