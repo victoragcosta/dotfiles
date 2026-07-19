@@ -23,6 +23,9 @@
     tree-sitter
     wl-clipboard
 
+    # better file watcher
+    inotify-tools
+
     # programming languages / neovim dependencies
     nodejs_22
     rustup
