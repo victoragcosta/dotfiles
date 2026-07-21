@@ -15,6 +15,9 @@
     interactiveShellInit = ''
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
+    shellAliases = {
+      neovide = "neovide --no-tabs -- -S ./.session.vim 1>/dev/null 2>/dev/null & disown";
+    };
   };
   programs.zsh.ohMyZsh = {
     enable = true;
