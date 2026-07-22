@@ -16,7 +16,11 @@
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
     shellAliases = {
-      neovide = "neovide --no-tabs -- -S ./.session.vim 1>/dev/null 2>/dev/null & disown";
+      neovide = "function _blah() { neovide --no-tabs -- \"$@\" 1>/dev/null 2>/dev/null & disown; }; _blah";
+      # neovides = "neovide -S ./.session.vim";
+      "cd.." = "cd ..";
+      "cd." = "cd ..";
+      ".." = "cd ..";
     };
   };
   programs.zsh.ohMyZsh = {

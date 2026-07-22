@@ -106,20 +106,24 @@ source $ZSH/oh-my-zsh.sh
 # ==== PACKAGE MANAGERS ==== #
 # ========================== #
 
-# ==== Brew ==== #
-# Add brew to path
 if [ ! -f /etc/NIXOS ]; then
+  # ==== Brew ==== #
+  # Add brew to path
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  # ==== asdf ==== #
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+  # append completions to fpath
+  fpath=(${ASDF_DIR}/completions $fpath)
+  # initialise completions with ZSH's compinit
+  autoload -Uz compinit && compinit
+  # ==== /asdf ==== #
+
+  # ==== Neovim ==== #
+  export PATH="/opt/nvim/bin:$PATH"
+  # ==== /Neovim ==== #
 fi
-
-# ==== asdf ==== #
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
-# ==== /asdf ==== #
 
 # ==== pnpm ==== #
 export PNPM_HOME="/home/cubo/.local/share/pnpm"
@@ -136,10 +140,6 @@ esac
 # ==== Local programs ==== #
 export PATH="/home/cubo/.local/bin:$PATH"
 # ==== /Local programs ==== #
-
-# ==== Neovim ==== #
-export PATH="/opt/nvim/bin:$PATH"
-# ==== /Neovim ==== #
 
 # ===  Android configs === #
 # export PATH="/opt/android-studio/bin:$PATH"

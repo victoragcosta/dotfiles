@@ -23,6 +23,16 @@
         key = "Meta+Shift+B";
         command = "brave";
       };
+      toggle-kwin-solo-window = {
+        name = "Toggle Focus Mode";
+        key = "Meta+Ctrl+F";
+        command = "/home/cubo/dotfiles/toggle-solo-window.sh";
+      };
+      toggle-polonium = {
+        name = "Toggle Auto-Tiling";
+        key = "Meta+Ctrl+T";
+        command = "/home/cubo/dotfiles/toggle-tiling.sh";
+      };
     };
 
     # System Settings > Text & Fonts > Fonts
