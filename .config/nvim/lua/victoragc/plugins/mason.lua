@@ -34,8 +34,14 @@ local lsp_configs = {
 	css_variables = {},
 	tailwindcss = {},
 	-- TS, JS and related
-	ts_ls = {
-		---@type lspconfig.settings.ts_ls
+	-- ts_ls = {
+	-- 	---@type lspconfig.settings.ts_ls
+	-- 	settings = {},
+	-- },
+	tsgo = {
+		-- TODO: eventually fix this type
+
+		---@type lspconfig.settings.tsgo
 		settings = {},
 	},
 	svelte = {
