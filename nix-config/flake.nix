@@ -79,6 +79,10 @@
           hostname = "cubobook";
           config = ./configs/cubobook/configuration.nix;
         };
+        cubotab = mkHostConfig {
+          hostname = "cubotab";
+          config = ./configs/cubotab/configuration.nix;
+        };
       };
     };
 }
