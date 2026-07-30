@@ -12,8 +12,8 @@
   imports = [
     # Include the results of the hardware scan.
     ../base.nix
-    # TODO: uncomment when I get the hardware specification
-    # ./hardware-configuration.nix
+    ../tablets.nix
+    ./hardware-configuration.nix
   ];
 
   networking.hostName = "cubotab"; # Define your hostname.
