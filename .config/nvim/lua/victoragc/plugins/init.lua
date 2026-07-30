@@ -1,6 +1,7 @@
 require 'victoragc.plugins.autopairs'
 require 'victoragc.plugins.bufferline'
 require 'victoragc.plugins.cmp'
+require 'victoragc.plugins.colorizer'
 require 'victoragc.plugins.colorschemes'
 require 'victoragc.plugins.comments'
 require 'victoragc.plugins.conform'

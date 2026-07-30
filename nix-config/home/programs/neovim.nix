@@ -23,6 +23,9 @@
     tree-sitter
     wl-clipboard
 
+    # Useful tools
+    pastel # converts colors in terminal
+
     # better file watcher
     inotify-tools
 

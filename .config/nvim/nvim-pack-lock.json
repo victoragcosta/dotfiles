@@ -90,6 +90,10 @@
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
+    "nvim-colorizer.lua": {
+      "rev": "72a05f62c52241bc7441c820eb53946f92b2e6a4",
+      "src": "https://github.com/catgoose/nvim-colorizer.lua"
+    },
     "nvim-emmet": {
       "rev": "cde4fb2968704aae5c18b7f8a9bc2508767bb78d",
       "src": "https://github.com/olrtg/nvim-emmet"
