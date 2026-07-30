@@ -38,4 +38,8 @@
     nodemon
     eslint_d
   ];
+
+  environment.variables = {
+    RUSTC_VERSION = "stable";
+  };
 }
