@@ -189,4 +189,17 @@
     enable = true;
     allowReboot = true;
   };
+
+  # Automatic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  # Automatic optimization
+  nix.optimise = {
+    automatic = true;
+    dates = [ "17:45" ];
+  };
 }
