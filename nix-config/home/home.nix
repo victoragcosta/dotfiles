@@ -23,11 +23,6 @@
         key = "Meta+Shift+B";
         command = "brave";
       };
-      toggle-kwin-solo-window = {
-        name = "Toggle Focus Mode";
-        key = "Meta+Ctrl+F";
-        command = "/home/cubo/dotfiles/toggle-solo-window.sh";
-      };
       toggle-polonium = {
         name = "Toggle Auto-Tiling";
         key = "Meta+Ctrl+T";
@@ -87,7 +82,7 @@
         dimDisplay.idleTimeout = 3 * 60; # 3 min in s
         inhibitLidActionWhenExternalMonitorConnected = true;
         powerButtonAction = "showLogoutScreen";
-        powerProfile = "performance";
+        powerProfile = "balanced";
         turnOffDisplay.idleTimeout = 5 * 60; # 5 min in s
         turnOffDisplay.idleTimeoutWhenLocked = 1 * 60; # 1 min in s
         whenLaptopLidClosed = "doNothing";
