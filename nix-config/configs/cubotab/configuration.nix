@@ -62,6 +62,12 @@
   # May help services that have trouble accessing /dev/dri (e.g., jellyfin/plex):
   # users.users.<service>.extraGroups = [ "video" "render" ];
 
+  # For intel IPU6 camera
+  hardware.ipu6 = {
+    enable = true;
+    platform = "ipu6epmtl";
+  };
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

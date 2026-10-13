@@ -116,7 +116,6 @@
     git
     wget
     gnutar
-    usbutils
     lazygit
     stow
     ghostty
@@ -127,6 +126,12 @@
     kdePackages.kalk
     gamemode
     quickemu
+
+    # Diagnostics tools
+    v4l-utils
+    clinfo
+    usbutils
+    libcamera
   ];
 
   # setup virtualisation
