@@ -40,6 +40,9 @@
     pnpm
     nodemon
     eslint_d
+
+    # Arduino
+    arduino-cli
   ];
 
   environment.variables = {

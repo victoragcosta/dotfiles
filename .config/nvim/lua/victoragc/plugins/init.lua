@@ -1,3 +1,4 @@
+require 'victoragc.plugins.arduino'
 require 'victoragc.plugins.autopairs'
 require 'victoragc.plugins.bufferline'
 require 'victoragc.plugins.cmp'

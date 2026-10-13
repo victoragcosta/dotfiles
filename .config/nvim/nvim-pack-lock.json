@@ -9,6 +9,10 @@
       "src": "https://github.com/L3MON4D3/LuaSnip",
       "version": "2.0.0 - 3.0.0"
     },
+    "arduino.nvim": {
+      "rev": "032d8c1bed433598947b24b8e2854af1ea0b65df",
+      "src": "https://github.com/lindmeira/arduino.nvim"
+    },
     "blink-cmp-ghostty": {
       "rev": "2c74f96787956c64922a1d6cca76fc502db16bb4",
       "src": "https://github.com/barrettruth/blink-cmp-ghostty"
