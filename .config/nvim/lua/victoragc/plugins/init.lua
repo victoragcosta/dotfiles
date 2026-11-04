@@ -28,3 +28,6 @@ require 'victoragc.plugins.treesitter'
 require 'victoragc.plugins.trouble'
 require 'victoragc.plugins.undotree'
 require 'victoragc.plugins.which-key'
+
+-- Needs to be below treesitter
+require 'victoragc.plugins.codecompanion'
