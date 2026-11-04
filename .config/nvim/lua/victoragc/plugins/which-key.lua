@@ -22,5 +22,11 @@ require('which-key').setup {
 		{ '<leader>x', group = 'E[x]ecute' },
 		{ '<leader>xc', group = '[C]olor' },
 		{ '<leader>H', group = 'Git [H]unk', mode = 'v' },
+		{ 'co', desc = '[C]hoose [O]urs' },
+		{ 'ct', desc = '[C]hoose [T]heirs' },
+		{ 'cb', desc = '[C]hoose [B]oth' },
+		{ 'c0', desc = '[C]hoose None' },
+		{ ']x', desc = 'Previous Conflict' },
+		{ '[x', desc = 'Next Conflict' },
 	},
 }

@@ -22,6 +22,7 @@
     gcc
     tree-sitter
     wl-clipboard
+    lua-language-server
 
     # Useful tools
     pastel # converts colors in terminal

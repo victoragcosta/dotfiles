@@ -28,8 +28,11 @@
     libreoffice-qt6-fresh
     yt-dlp
     theclicker
-    lua-language-server
+    proton-vpn
+    proton-vpn-cli
   ];
+
+  services.cloudflare-warp.enable = true;
 
   # Fix libreoffice using x11 instead of wayland
   environment.variables = {
