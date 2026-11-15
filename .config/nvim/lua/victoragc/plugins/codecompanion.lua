@@ -38,6 +38,13 @@ require('codecompanion').setup {
 					},
 				})
 			end,
+			deepseek_work = function()
+				return require('codecompanion.adapters').extend('deepseek', {
+					env = {
+						api_key = 'file:~/dotfiles/.deepseek_api_key_work.local',
+					},
+				})
+			end,
 		},
 	},
 }
