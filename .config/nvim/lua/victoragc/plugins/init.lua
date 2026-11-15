@@ -1,3 +1,6 @@
+-- Needs to be above lspconfig
+require 'victoragc.plugins.ts-autotag'
+
 require 'victoragc.plugins.arduino'
 require 'victoragc.plugins.autopairs'
 require 'victoragc.plugins.bufferline'
@@ -19,7 +22,6 @@ require 'victoragc.plugins.lspconfig'
 require 'victoragc.plugins.mason'
 require 'victoragc.plugins.mini'
 require 'victoragc.plugins.nvim-treesitter-context'
-require 'victoragc.plugins.nvim-ts-autotag'
 require 'victoragc.plugins.nvim_context_vt'
 require 'victoragc.plugins.oil'
 require 'victoragc.plugins.telescope'
