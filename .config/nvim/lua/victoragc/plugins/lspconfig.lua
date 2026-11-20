@@ -2,11 +2,13 @@ require 'url'
 local capabilities_installers =
 	require 'victoragc.plugins.lspconfig.capabilities-installers'
 local helpers = require 'victoragc.plugins.lspconfig.helpers'
+local legacy_commands = require 'victoragc.plugins.lspconfig.legacy-commands'
 
 vim.pack.add {
 	github 'j-hui/fidget.nvim',
 }
 require('fidget').setup {}
+legacy_commands.setup()
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('victoragc-lsp-attach', { clear = true }),
