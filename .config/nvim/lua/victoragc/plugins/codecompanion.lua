@@ -20,14 +20,29 @@ require('codecompanion').setup {
 						adapter = 'duckduckgo',
 					},
 				},
+				['read_file'] = {
+					opts = {
+						require_approval_before = false,
+					},
+				},
 				-- The default is a function, which the session serialiser can't encode
 				['grep_search'] = {
 					enabled = true,
+					opts = {
+						require_approval_before = false,
+					},
+				},
+				['insert_edit_into_file'] = {
+					opts = {
+						-- Apply edits without asking before or confirming after
+						require_approval_before = false,
+						require_confirmation_after = false,
+					},
 				},
 			},
-			adapter = 'deepseek',
+			adapter = 'deepseek_work',
 		},
-		inline = { adapter = 'deepseek' },
+		inline = { adapter = 'deepseek_work' },
 	},
 	adapters = {
 		http = {
