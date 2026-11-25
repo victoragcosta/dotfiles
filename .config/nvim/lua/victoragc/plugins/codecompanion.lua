@@ -69,6 +69,13 @@ require('codecompanion').setup {
 					},
 				})
 			end,
+			gemini = function()
+				return require('codecompanion.adapters').extend('gemini', {
+					env = {
+						api_key = 'file:~/dotfiles/.gemini_api_key.local',
+					},
+				})
+			end,
 		},
 	},
 }
