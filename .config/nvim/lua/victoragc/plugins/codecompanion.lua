@@ -60,6 +60,15 @@ require('codecompanion').setup {
 					},
 				})
 			end,
+			chatgpt = function()
+				return require('codecompanion.adapters').extend('openai', {
+					name = 'chatgpt',
+					formatted_name = 'ChatGPT',
+					env = {
+						api_key = 'file:~/dotfiles/.chatgpt_api_key.local',
+					},
+				})
+			end,
 		},
 	},
 }
