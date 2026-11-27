@@ -3,55 +3,26 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
   lib,
   ...
 }:
 {
+  imports = [ ./common.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.memtest86.enable = true;
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/Sao_Paulo";
-
   # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LANGUAGE = ""; # fix ç in us-intl
-      LANG = "pt_BR.UTF-8"; # fix ç in us-intl
-      LC_ADDRESS = "pt_BR.UTF-8";
-      LC_COLLATE = "en_US.UTF-8";
-      LC_CTYPE = "pt_BR.UTF-8"; # fix ç in us-intl
-      LC_IDENTIFICATION = "pt_BR.UTF-8";
-      LC_MEASUREMENT = "pt_BR.UTF-8";
-      LC_MESSAGES = "en_US.UTF-8";
-      LC_MONETARY = "pt_BR.UTF-8";
-      LC_NAME = "pt_BR.UTF-8";
-      LC_NUMERIC = "pt_BR.UTF-8";
-      LC_PAPER = "pt_BR.UTF-8";
-      LC_TELEPHONE = "pt_BR.UTF-8";
-      LC_TIME = "pt_BR.UTF-8";
-    };
-    inputMethod = {
-      type = "fcitx5";
-      enable = true;
-      fcitx5.addons = with pkgs; [
-        fcitx5-mozc
-        fcitx5-gtk
-      ];
-    };
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
   };
 
   environment.variables = {
@@ -66,9 +37,6 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
-  # Configure console keymap
-  console.keyMap = "us-acentos";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -89,35 +57,10 @@
     #media-session.enable = true;
   };
 
-  # Enable bluetooth support
-  hardware.bluetooth = {
-    enable = lib.mkDefault true;
-    powerOnBoot = lib.mkDefault true;
-    settings.General.Experimental = lib.mkDefault true;
-  };
   # Enable advanced features for Xbox and similar controllers
   hardware.xpadneo.enable = true;
 
-  # Experimental
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    zsh
-    oh-my-zsh
-    vim
-    git
-    wget
-    gnutar
-    lazygit
-    stow
     ghostty
     brave
     vlc
@@ -130,7 +73,6 @@
     # Diagnostics tools
     v4l-utils
     clinfo
-    usbutils
     libcamera
   ];
 
@@ -139,20 +81,11 @@
 
   # List programs you want to enable
   programs = {
-    # Improves dynamically linked libraries
-    nix-ld.enable = true;
     steam.enable = lib.mkDefault true;
     # Adds better support for running AppImages
     appimage.enable = lib.mkDefault true;
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # mtr.enable = true;
-    # gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
   };
+
   # Enables my VR configuration at ../home/vr.nix if this is set to true
   my.vr = {
     enable = lib.mkDefault false;
@@ -173,9 +106,6 @@
       via
     ];
 
-    # Enable the OpenSSH daemon.
-    openssh.enable = true;
-
     # Enable fwupd to update BIOS and other firmwares
     fwupd.enable = true;
 
@@ -187,24 +117,5 @@
       enable = lib.mkDefault false;
       switch-screen = lib.mkDefault false;
     };
-  };
-
-  # Auto upgrading
-  system.autoUpgrade = {
-    enable = true;
-    allowReboot = true;
-  };
-
-  # Automatic garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
-  # Automatic optimization
-  nix.optimise = {
-    automatic = true;
-    dates = [ "17:45" ];
   };
 }

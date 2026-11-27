@@ -1,41 +1,56 @@
-{ pkgs, stable-pkgs, ... }: {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+{
+  config,
+  lib,
+  pkgs,
+  stable-pkgs,
+  ...
+}:
+{
+  config = lib.mkMerge [
+    {
+      # Allow unfree packages
+      nixpkgs.config.allowUnfree = true;
 
-  # Add flatpak
-  services.flatpak.enable = true;
-  systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
+      users.users.cubo.packages =
+        with pkgs;
+        [
+          android-tools
+          proton-vpn-cli
+        ]
+        ++ lib.optionals config.my.desktop.enable [
+          vial
+          thunderbird
+          spotify
+          orca-slicer
+          zapzap
+          discord
+          stable-pkgs.freecad
+          easyeffects
+          libreoffice-qt6-fresh
+          yt-dlp
+          theclicker
+          proton-vpn
+        ];
 
-  users.users.cubo.packages = with pkgs; [
-    vial
-    thunderbird
-    spotify
-    orca-slicer
-    zapzap
-    discord
-    stable-pkgs.freecad
-    # removed, dunno what to do,
-    # but I ain't using it, so I ain't dealing with that now
-    # stremio
-    android-tools
-    easyeffects
-    libreoffice-qt6-fresh
-    yt-dlp
-    theclicker
-    proton-vpn
-    proton-vpn-cli
+      environment.systemPackages = [ pkgs.rclone ];
+
+      services.cloudflare-warp.enable = true;
+    }
+    (lib.mkIf config.my.desktop.enable {
+      # Add flatpak
+      services.flatpak.enable = true;
+      systemd.services.flatpak-repo = {
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.flatpak ];
+        script = ''
+          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        '';
+      };
+
+      # Fix libreoffice using x11 instead of wayland
+      environment.variables = {
+        QT_QPA_PLATFORM = "wayland";
+      };
+    })
   ];
-
-  services.cloudflare-warp.enable = true;
-
-  # Fix libreoffice using x11 instead of wayland
-  environment.variables = {
-    QT_QPA_PLATFORM = "wayland";
-  };
 }

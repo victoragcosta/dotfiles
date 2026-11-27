@@ -31,22 +31,30 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
-      stable-pkgs = import nixpkgs-stable ({
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-      });
-      xr-pkgs = import nixpkgs ({
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-        overlays = [ nixpkgs-xr.overlays.default ];
-      });
       mkHostConfig =
-        { hostname, config, ... }:
+        {
+          hostname,
+          config,
+          system ? "x86_64-linux",
+          homeModules ? [ ./home/default.nix ],
+          homeConfig ? ./home/home.nix,
+          ...
+        }:
+        let
+          stable-pkgs = import nixpkgs-stable {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+          };
+          xr-pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+            };
+            overlays = [ nixpkgs-xr.overlays.default ];
+          };
+        in
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = inputs // {
@@ -56,14 +64,15 @@
           };
           modules = [
             nix-flatpak.nixosModules.nix-flatpak
-
             config
-            ./home/default.nix
+          ]
+          ++ homeModules
+          ++ [
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.cubo = ./home/home.nix;
+              home-manager.users.cubo = homeConfig;
               home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
             }
           ];
@@ -82,6 +91,18 @@
         cubotab = mkHostConfig {
           hostname = "cubotab";
           config = ./configs/cubotab/configuration.nix;
+        };
+        cubopi = mkHostConfig {
+          hostname = "cubopi";
+          system = "aarch64-linux";
+          config = ./configs/cubopi/configuration.nix;
+          homeModules = [ ./home/headless.nix ];
+        };
+      };
+
+      packages = {
+        x86_64-linux = {
+          cubopi-sd-image = self.nixosConfigurations.cubopi.config.system.build.sdImage;
         };
       };
     };

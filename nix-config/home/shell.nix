@@ -1,4 +1,10 @@
-{ pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   # Install fonts
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
@@ -15,19 +21,22 @@
     interactiveShellInit = ''
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
-    shellAliases = {
-      neovide = "function _blah() { neovide --no-tabs -- \"$@\" 1>/dev/null 2>/dev/null & disown; }; _blah";
-      # neovides = "neovide -S ./.session.vim";
-      "cd.." = "cd ..";
-      "cd." = "cd ..";
-      ".." = "cd ..";
-    };
+    shellAliases =
+      {
+        "cd.." = "cd ..";
+        "cd." = "cd ..";
+        ".." = "cd ..";
+      }
+      // lib.optionalAttrs config.my.desktop.enable {
+        neovide = "function _blah() { neovide --no-tabs -- \"$@\" 1>/dev/null 2>/dev/null & disown; }; _blah";
+        # neovides = "neovide -S ./.session.vim";
+      };
   };
   programs.zsh.ohMyZsh = {
     enable = true;
   };
   environment.shells = [ pkgs.zsh ];
-  environment.variables = {
+  environment.variables = lib.optionalAttrs config.my.desktop.enable {
     ZVM_SYSTEM_CLIPBOARD_ENABLED = "true";
   };
 
@@ -38,12 +47,15 @@
     uid = 1000;
     isNormalUser = true;
     description = "Victor";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      # uinput is needed for sunshine
-      "uinput"
-    ];
+    extraGroups =
+      [
+        "networkmanager"
+        "wheel"
+      ]
+      ++ lib.optionals config.my.desktop.enable [
+        # uinput is needed for sunshine
+        "uinput"
+      ];
     shell = pkgs.zsh;
   };
 }

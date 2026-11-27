@@ -1,48 +1,56 @@
-{ pkgs, ... }: {
-  # For configuring gaming wheels
-  services.udev.packages = with pkgs; [ oversteer ];
-  hardware.new-lg4ff.enable = true;
-
-  users.users.cubo.packages = with pkgs; [
-    # For configuring logitech devices
-    solaar
-    # For testing joysticks and wheels
-    jstest-gtk
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  config = lib.mkIf config.my.desktop.enable {
     # For configuring gaming wheels
-    oversteer
-  ];
+    services.udev.packages = with pkgs; [ oversteer ];
+    hardware.new-lg4ff.enable = true;
 
-  services.udev.extraRules = ''
-    # This rule was added by Solaar.
-    #
-    # Allows non-root users to have raw access to Logitech devices.
-    # Allowing users to write to the device is potentially dangerous
-    # because they could perform firmware updates.
+    users.users.cubo.packages = with pkgs; [
+      # For configuring logitech devices
+      solaar
+      # For testing joysticks and wheels
+      jstest-gtk
+      # For configuring gaming wheels
+      oversteer
+    ];
 
-    ACTION == "remove", GOTO="solaar_end"
-    SUBSYSTEM != "hidraw", GOTO="solaar_end"
+    services.udev.extraRules = ''
+      # This rule was added by Solaar.
+      #
+      # Allows non-root users to have raw access to Logitech devices.
+      # Allowing users to write to the device is potentially dangerous
+      # because they could perform firmware updates.
 
-    # USB-connected Logitech receivers and devices
-    ATTRS{idVendor}=="046d", GOTO="solaar_apply"
+      ACTION == "remove", GOTO="solaar_end"
+      SUBSYSTEM != "hidraw", GOTO="solaar_end"
 
-    # Lenovo nano receiver
-    ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6042", GOTO="solaar_apply"
+      # USB-connected Logitech receivers and devices
+      ATTRS{idVendor}=="046d", GOTO="solaar_apply"
 
-    # Bluetooth-connected Logitech devices
-    KERNELS == "0005:046D:*", GOTO="solaar_apply"
+      # Lenovo nano receiver
+      ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="6042", GOTO="solaar_apply"
 
-    GOTO="solaar_end"
+      # Bluetooth-connected Logitech devices
+      KERNELS == "0005:046D:*", GOTO="solaar_apply"
 
-    LABEL="solaar_apply"
+      GOTO="solaar_end"
 
-    # Allow any seated user to access the receiver.
-    # uaccess: modern ACL-enabled udev
-    TAG+="uaccess"
+      LABEL="solaar_apply"
 
-    # Grant members of the "plugdev" group access to receiver (useful for SSH users)
-    #MODE="0660", GROUP="plugdev"
+      # Allow any seated user to access the receiver.
+      # uaccess: modern ACL-enabled udev
+      TAG+="uaccess"
 
-    LABEL="solaar_end"
-    # vim: ft=udevrules
-  '';
+      # Grant members of the "plugdev" group access to receiver (useful for SSH users)
+      #MODE="0660", GROUP="plugdev"
+
+      LABEL="solaar_end"
+      # vim: ft=udevrules
+    '';
+  };
 }

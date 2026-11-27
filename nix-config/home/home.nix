@@ -1,11 +1,11 @@
-{ ... }: {
+{ lib, ... }: {
 
   # To easily find changed configurations you can run
   # `nix run github:nix-community/plasma-manager/trunk#rc2nix > plasma.nix`
 
   # Enable and configure Plasma settings
   programs.plasma = {
-    enable = true;
+    enable = lib.mkDefault true;
 
     #
     # System Settings (Mimic System Settings GUI order)
@@ -135,7 +135,7 @@
   };
 
   # Set Home Manager state version to match NixOS system.stateVersion
-  home.stateVersion = "25.05";
+  home.stateVersion = lib.mkDefault "25.05";
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
