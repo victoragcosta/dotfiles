@@ -57,5 +57,14 @@
   #   services.tailscale.extraUpFlags = [ "--ssh" ];
   services.tailscale.openFirewall = true;
 
+  # The shared config enables daily upgrades, but no flake reference is set
+  # for this host. Build updates on cubotab and push them with --target-host.
+  system.autoUpgrade.enable = lib.mkForce false;
+
+  # A 1 GB Pi 3B should not run daily hardlink optimisation, and compressed
+  # RAM swap is safer than swapping on the SD card.
+  nix.optimise.automatic = lib.mkForce false;
+  zramSwap.enable = true;
+
   system.stateVersion = "26.05";
 }
