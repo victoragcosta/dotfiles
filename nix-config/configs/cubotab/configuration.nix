@@ -19,9 +19,6 @@
   networking.hostName = "cubotab"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Build aarch64 hosts (cubopi) locally through QEMU user emulation.
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
   # disabled because it's not that useful
   services.sunshine.enable = lib.mkForce false;
 

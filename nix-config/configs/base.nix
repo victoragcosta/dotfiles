@@ -10,6 +10,9 @@
 {
   imports = [ ./common.nix ];
 
+  # Build aarch64 hosts (cubopi) locally through QEMU user emulation.
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
