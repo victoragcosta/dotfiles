@@ -11,6 +11,9 @@
     fira-code
   ];
 
+  # Wake-on-LAN helper for waking deskcubo from other hosts (mainly cubopi).
+  environment.systemPackages = [ pkgs.wakeonlan ];
+
   # Enable ZSH shell
   programs.zsh = {
     enable = true;
@@ -26,6 +29,7 @@
         "cd.." = "cd ..";
         "cd." = "cd ..";
         ".." = "cd ..";
+        "wake-deskcubo" = "wakeonlan a8:a1:59:3f:01:86";
       }
       // lib.optionalAttrs config.my.desktop.enable {
         neovide = "function _blah() { neovide --no-tabs -- \"$@\" 1>/dev/null 2>/dev/null & disown; }; _blah";
