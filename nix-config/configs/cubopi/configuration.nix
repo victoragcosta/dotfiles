@@ -1,6 +1,7 @@
 {
   lib,
   modulesPath,
+  pkgs,
   ...
 }:
 {
@@ -9,6 +10,10 @@
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
     ./hardware-configuration.nix
   ];
+
+  # Keep Ghostty's terminfo available so SSH sessions can use
+  # TERM=xterm-ghostty without falling back to xterm-256color.
+  environment.systemPackages = [ pkgs.ghostty.terminfo ];
 
   networking.hostName = "cubopi";
 
