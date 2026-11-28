@@ -18,7 +18,7 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     setOptions = [ "EXTENDED_GLOB" ];
-    interactiveShellInit = ''
+    interactiveShellInit = lib.optionalString config.my.desktop.enable ''
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '';
     shellAliases =
