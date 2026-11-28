@@ -70,6 +70,10 @@
     # extraUpFlags = [ "--ssh" ];
   };
 
+  # cubotab deploys locally built, unsigned paths to the Pi over SSH. Keep
+  # this host on a trusted tailnet; remove it if signing keys are configured.
+  nix.settings.require-sigs = false;
+
   # The shared config enables daily upgrades, but no flake reference is set
   # for this host. Build updates on cubotab and push them with --target-host.
   system.autoUpgrade.enable = lib.mkForce false;
