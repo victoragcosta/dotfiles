@@ -61,6 +61,12 @@
   services.tailscale = {
     openFirewall = true;
     authKeyFile = "/var/lib/tailscale/authkey";
+
+    # Enable IP forwarding and advertise cubopi as an exit node. The route
+    # still has to be approved in the Tailscale admin console.
+    useRoutingFeatures = "server";
+    extraSetFlags = [ "--advertise-exit-node" ];
+
     # extraUpFlags = [ "--ssh" ];
   };
 
