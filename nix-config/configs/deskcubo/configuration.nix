@@ -26,6 +26,9 @@
   };
 
   networking.hostName = "deskcubo"; # Define your hostname.
+
+  # Enable Wake-on-LAN on the onboard Ethernet controller.
+  networking.interfaces.enp5s0.wakeOnLan.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services.sunshine = {
