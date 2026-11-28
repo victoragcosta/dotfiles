@@ -54,13 +54,15 @@
       PermitRootLogin = "no";
     };
   };
-  # tailscaled starts at boot, but the node still needs a one-time login:
-  #   sudo tailscale up
-  # To bring it up automatically, set authKeyFile to a readable secret path;
-  # extraUpFlags only apply when authKeyFile is set:
-  #   services.tailscale.authKeyFile = "/run/secrets/tailscale-authkey";
-  #   services.tailscale.extraUpFlags = [ "--ssh" ];
-  services.tailscale.openFirewall = true;
+  # tailscaled starts at boot and authenticates with the key stored at
+  # /var/lib/tailscale/authkey. The file must exist before the service starts
+  # and should be readable only by root. extraUpFlags only apply when
+  # authKeyFile is set.
+  services.tailscale = {
+    openFirewall = true;
+    authKeyFile = "/var/lib/tailscale/authkey";
+    # extraUpFlags = [ "--ssh" ];
+  };
 
   # The shared config enables daily upgrades, but no flake reference is set
   # for this host. Build updates on cubotab and push them with --target-host.
